@@ -34,6 +34,9 @@ module.exports = {
       timestamp: Date.now(),
     });
   },
+  getColorsCollection: async () => {
+    return await getColorsCollection();
+  },
 
   getColorHistory: async () => {
     const colors = await getColorsCollection();

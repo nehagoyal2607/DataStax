@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrajs/collections": "^0.1.0",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-sanitizer": "^1.0.6",
     "express-session": "^1.17.2",
