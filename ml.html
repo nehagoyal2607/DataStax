@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script type="text/javascript">
+  // Classifier Variable
+  let classifier;
+  // Model URL
+  let imageModelURL = 'https://teachablemachine.withgoogle.com/models/z8uqAzIY5/';
+  
+  // Video
+  let video;
+  let flippedVideo;
+  // To store the classification
+  let label = "";
+
+  // Load the model first
+  function preload() {
+    classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+  }
+
+  function setup() {
+    createCanvas(320, 260);
+    // Create the video
+    video = createCapture(VIDEO);
+    video.size(320, 240);
+    video.hide();
+
+    flippedVideo = ml5.flipImage(video);
+    // Start classifying
+    classifyVideo();
+  }
+
+  function draw() {
+    background(0);
+    // Draw the video
+    image(flippedVideo, 0, 0);
+
+    // Draw the label
+    fill(255);
+    textSize(16);
+    textAlign(CENTER);
+    text(label, width / 2, height - 4);
+  }
+
+  // Get a prediction for the current video frame
+  function classifyVideo() {
+    flippedVideo = ml5.flipImage(video)
+    classifier.classify(flippedVideo, gotResult);
+    flippedVideo.remove();
+
+  }
+
+  // When we get a result
+  function gotResult(error, results) {
+    // If there is an error
+    if (error) {
+      console.error(error);
+      return;
+    }
+    // The results are in an array ordered by confidence.
+    // console.log(results[0]);
+    label = results[0].label;
+    // Classifiy again!
+    classifyVideo();
+  }
+</script>
+</head>
+<body>
+    <div>Teachable Machine Image Model - p5.js and ml5.js</div>
+    <!-- alphabet: ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"], -->
+		<!-- alpImg: ["https://ibb.co/Y3QZv34","https://ibb.co/nzxTmZy","https://ibb.co/jyjWvZW","https://ibb.co/wJzYchq","https://ibb.co/ZL0TV1v","https://ibb.co/NmXX2jj","https://ibb.co/7QzNkTS","https://ibb.co/rm34tcv","https://ibb.co/WstTdmC","https://ibb.co/Kcnwd0w","https://ibb.co/BTrc40d","https://ibb.co/dKzqHJJ","https://ibb.co/jGVRD1c","https://ibb.co/X86vfC9","https://ibb.co/LY2QtKJ","https://ibb.co/k4nQbmW","https://ibb.co/Sy2Mry9","https://ibb.co/GvL9GFh","https://ibb.co/V2Tk6H5","https://ibb.co/NyyPpWF","https://ibb.co/brKRdHF","https://ibb.co/pwxVqyc","https://ibb.co/gv16MXk","https://ibb.co/z2d5jgb","https://ibb.co/8z6NZn7","https://ibb.co/kDKBqXV"], -->
+    <!-- {
+		alphabet: "a",
+		alpImg: "https://ibb.co/Y3QZv34"
+	  },
+	  {
+		alphabet: "b",
+		alpImg: "https://ibb.co/nzxTmZy"
+	  },
+	  {
+		alphabet: "c",
+		alpImg: "https://ibb.co/jyjWvZW"
+	  },
+	  {
+		alphabet: "d",
+		alpImg: "https://ibb.co/wJzYchq"
+	  },
+	  {
+		alphabet: "e",
+		alpImg: "https://ibb.co/ZL0TV1v"
+	  },
+	  {
+		alphabet: "f",
+		alpImg: "https://ibb.co/NmXX2jj"
+	  },
+	  {
+		alphabet: "g",
+		alpImg: "https://ibb.co/7QzNkTS"
+	  },
+	  {
+		alphabet: "h",
+		alpImg: "https://ibb.co/rm34tcv"
+	  },
+	  {
+		alphabet: "i",
+		alpImg: "https://ibb.co/WstTdmC"
+	  },
+	  {
+		alphabet: "j",
+		alpImg: "https://ibb.co/Kcnwd0w"
+	  },
+	  {
+		alphabet: "k",
+		alpImg: "https://ibb.co/BTrc40d"
+	  },
+	  {
+		alphabet: "l",
+		alpImg: "https://ibb.co/dKzqHJJ"
+	  },
+	  {
+		alphabet: "m",
+		alpImg: "https://ibb.co/jGVRD1c"
+	  },
+	  {
+		alphabet: "n",
+		alpImg: "https://ibb.co/X86vfC9"
+	  },
+	  {
+		alphabet: "o",
+		alpImg: "https://ibb.co/LY2QtKJ"
+	  },
+	  {
+		alphabet: "p",
+		alpImg: "https://ibb.co/k4nQbmW"
+	  },
+	  {
+		alphabet: "q",
+		alpImg: "https://ibb.co/Sy2Mry9"
+	  },
+	  {
+		alphabet: "r",
+		alpImg: "https://ibb.co/GvL9GFh"
+	  },
+	  {
+		alphabet: "s",
+		alpImg: "https://ibb.co/V2Tk6H5"
+	  },
+	  {
+		alphabet: "t",
+		alpImg: "https://ibb.co/NyyPpWF"
+	  },
+	  {
+		alphabet: "u",
+		alpImg: "https://ibb.co/brKRdHF"
+	  },
+	  {
+		alphabet: "v",
+		alpImg: "https://ibb.co/pwxVqyc"
+	  },
+	  {
+		alphabet: "w",
+		alpImg: "https://ibb.co/gv16MXk"
+	  },
+	  {
+		alphabet: "x",
+		alpImg: "https://ibb.co/z2d5jgb"
+	  },
+	  {
+		alphabet: "y",
+		alpImg: "https://ibb.co/8z6NZn7"
+	  },
+	  {
+		alphabet: "z",
+		alpImg: "https://ibb.co/kDKBqXV"
+	  }); -->
+
+</body>
+</html>

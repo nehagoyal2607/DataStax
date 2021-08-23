@@ -6,6 +6,8 @@ const passport = require("passport");
 const expressSanitizer = require("express-sanitizer");
 const LocalStrategy = require("passport-local");
 const astra = require("./models/astra");
+const signs = require("./models/sign");
+
 // const User = async()=>{
 // 	return await astra.getColorsCollection();
 // }
@@ -94,13 +96,10 @@ app.post("/register", async function(req, res){
 	console.log(sample);
 })
 app.get("/", async function(req, res){
-	await astra.addColorHistory({
-		name: "yellow",
-		value: 1,
-	  });
-	const sample = await astra.getColorHistory();
-	console.log(sample);
-  res.send("Hi");
+	const sample = await signs.getColorHistory();
+	// console.log(sample[0].alphabet[25]);
+	// console.log(sample);
+  	res.send("Hi");
 })
 app.listen(3000, process.env.IP, function(){
 	console.log("App is running.");
