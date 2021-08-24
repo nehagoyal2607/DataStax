@@ -30,14 +30,16 @@ app.get("/login", function(req, res){
 })
 app.post("/login", async(req, res)=>{
 	const {username, password} = req.body;
+	
 	const user = await users.getUserByName(username);
+	// console.log(user);
 	const validPassword = await bcrypt.compare(password, user.password);
 	if(validPassword){
 		req.session.user_id = user.id;
 		
 		res.redirect("/");
 	}else{
-		// console.log("fail");
+		console.log("fail");
 		res.redirect("/login");
 	}
 })
@@ -47,8 +49,7 @@ app.get("/register", function(req, res){
 })
 
 app.post("/register", async function(req, res){
-	// const user = await users.getUserByName(req.body.username);
-	// console.log(user);
+	const user = users.getUserByName(req.body.username);
 	
 		const {password, username} = req.body;
 		const hash = await bcrypt.hash(password, 12);
@@ -62,14 +63,15 @@ app.post("/register", async function(req, res){
 		console.log("registered");
 		res.redirect("/");
 	
-	
+		
 })
-app.post("/logout", (req, res)=>{
-	res.session.user_id = null;
+app.get("/logout", (req, res)=>{
+	req.session.user_id = null;
 	res.redirect("/login");
 })
 app.get("/", async function(req, res){
-
+	// const sample = await users.getUsers();
+	// console.log(sample);
   	res.send("Hi");
 })
 

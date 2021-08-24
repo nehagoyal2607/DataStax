@@ -53,10 +53,12 @@ module.exports = {
   getUserByName: async (name) => {
     const users = await getUsersCollection();
     try {
-      return await users.findOne({username:name});
-      
+      // console.log(name);
+      const sample =  await users.findOne({username:{$eq:name}});
+      // console.log(sample);
+      return sample;
     } catch (e) {
-      return [];
+      return null;
     }
   },
   deleteUser: async () => {
