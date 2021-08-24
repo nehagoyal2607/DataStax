@@ -1,5 +1,5 @@
 const { createClient } = require("@astrajs/collections");
-
+const { v4: uuidv4} = require('uuid');
 let astraClient = null;
 
 const getAstraClient = async () => {
@@ -28,15 +28,15 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 module.exports = {
   addUser: async (user) => {
     const users = await getUsersCollection();
-    await users.create({
-      username: user.name,
+    const newUserId = await users.create({
+      id: uuidv4(),
+      username: user.username,
       password: user.password
     });
+    const newu = await users.get(newUserId.documentId);
+    console.log(newu);
+    return (newu);
   },
-  getUsersCollection: async () => {
-    return await getUsersCollection();
-  },
-
   getUsers: async () => {
     const users = await getUsersCollection();
     try {
@@ -50,7 +50,15 @@ module.exports = {
       return [];
     }
   },
-
+  getUserByName: async (name) => {
+    const users = await getUsersCollection();
+    try {
+      return await users.findOne({username:name});
+      
+    } catch (e) {
+      return [];
+    }
+  },
   deleteUser: async () => {
     await getAstraClient();
     astraClient.restClient.delete(
