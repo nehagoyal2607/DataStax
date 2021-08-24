@@ -32,16 +32,22 @@ app.post("/login", async(req, res)=>{
 	const {username, password} = req.body;
 	
 	const user = await users.getUserByName(username);
-	// console.log(user);
-	const validPassword = await bcrypt.compare(password, user.password);
-	if(validPassword){
-		req.session.user_id = user.id;
-		
-		res.redirect("/");
-	}else{
-		console.log("fail");
+	if(user == null || user.length == 0){
+		console.log("doesn't exist");
 		res.redirect("/login");
+	}else{
+		const validPassword = await bcrypt.compare(password, user.password);
+		if(validPassword){
+			req.session.user_id = user.id;
+			
+			res.redirect("/");
+		}else{
+			console.log("fail");
+			res.redirect("/login");
+		}
 	}
+	// console.log(user);
+	
 })
 
 app.get("/register", function(req, res){
