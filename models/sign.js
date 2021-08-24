@@ -16,7 +16,7 @@ const getAstraClient = async () => {
   return astraClient;
 };
 
-const getColorsCollection = async () => {
+const getSignsCollection = async () => {
   const documentClient = await getAstraClient();
   return documentClient
     .namespace(process.env.ASTRA_DB_KEYSPACE)
@@ -26,22 +26,22 @@ const getColorsCollection = async () => {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 module.exports = {
-  addColorHistory: async (color) => {
-    const colors = await getColorsCollection();
-    await colors.create({
-      colorName: color.alphabet,
-      colorValue: color.alpImg,
+  addSign: async (sign) => {
+    const signs = await getSignsCollection();
+    await signs.create({
+      colorName: sign.alphabet,
+      colorValue: sign.alpImg,
       timestamp: Date.now(),
     });
   },
-  getColorsCollection: async () => {
-    return await getColorsCollection();
+  getSignsCollection: async () => {
+    return await getSignsCollection();
   },
 
-  getColorHistory: async () => {
-    const colors = await getColorsCollection();
+  getSign: async () => {
+    const signs = await getSignsCollection();
     try {
-      const res = await colors.find();
+      const res = await signs.find();
       return Object.keys(res).map((itemId) => ({
         id: itemId,
         alphabet: res[itemId].colorName,
@@ -53,7 +53,7 @@ module.exports = {
     }
   },
 
-  deleteColorHistory: async () => {
+  deleteSign: async () => {
     await getAstraClient();
     astraClient.restClient.delete(
       `/api/rest/v2/schemas/keyspaces/${process.env.ASTRA_DB_KEYSPACE}/tables/sign`

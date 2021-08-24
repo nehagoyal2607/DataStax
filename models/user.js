@@ -16,47 +16,45 @@ const getAstraClient = async () => {
   return astraClient;
 };
 
-const getColorsCollection = async () => {
+const getUsersCollection = async () => {
   const documentClient = await getAstraClient();
   return documentClient
     .namespace(process.env.ASTRA_DB_KEYSPACE)
-    .collection("colors");
+    .collection("users");
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 module.exports = {
-  addColorHistory: async (color) => {
-    const colors = await getColorsCollection();
-    await colors.create({
-      colorName: color.name,
-      colorValue: color.value,
-      timestamp: Date.now(),
+  addUser: async (user) => {
+    const users = await getUsersCollection();
+    await users.create({
+      username: user.name,
+      password: user.password
     });
   },
-  getColorsCollection: async () => {
-    return await getColorsCollection();
+  getUsersCollection: async () => {
+    return await getUsersCollection();
   },
 
-  getColorHistory: async () => {
-    const colors = await getColorsCollection();
+  getUsers: async () => {
+    const users = await getUsersCollection();
     try {
-      const res = await colors.find();
+      const res = await users.find();
       return Object.keys(res).map((itemId) => ({
         id: itemId,
-        name: res[itemId].colorName,
-        value: res[itemId].colorValue,
-        timestamp: new Date(res[itemId].timestamp).toString(),
+        username: res[itemId].username,
+        password: res[itemId].password
       }));
     } catch (e) {
       return [];
     }
   },
 
-  deleteColorHistory: async () => {
+  deleteUser: async () => {
     await getAstraClient();
     astraClient.restClient.delete(
-      `/api/rest/v2/schemas/keyspaces/${process.env.ASTRA_DB_KEYSPACE}/tables/colors`
+      `/api/rest/v2/schemas/keyspaces/${process.env.ASTRA_DB_KEYSPACE}/tables/users`
     );
     await sleep(2000);
   },
