@@ -58,7 +58,7 @@ module.exports = {
       // console.log(sample);
       return sample;
     } catch (e) {
-      return null;
+      return [];
     }
   },
   deleteUser: async () => {
