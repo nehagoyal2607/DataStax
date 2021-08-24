@@ -47,9 +47,9 @@ app.get("/register", function(req, res){
 })
 
 app.post("/register", async function(req, res){
-	const user = await users.getUserByName(req.body.username);
+	// const user = await users.getUserByName(req.body.username);
 	// console.log(user);
-	if(!user){
+	
 		const {password, username} = req.body;
 		const hash = await bcrypt.hash(password, 12);
 
@@ -61,9 +61,7 @@ app.post("/register", async function(req, res){
 		req.session.user_id = newUser.id;
 		console.log("registered");
 		res.redirect("/");
-	}else{
-		console.log("Already exists");
-	}
+	
 	
 })
 app.post("/logout", (req, res)=>{
