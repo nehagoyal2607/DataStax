@@ -56,7 +56,7 @@ app.get("/register", function(req, res){
 
 app.post("/register", async function(req, res){
 	const user = users.getUserByName(req.body.username);
-	
+	if(user == null  || user.length == 0){
 		const {password, username} = req.body;
 		const hash = await bcrypt.hash(password, 12);
 
@@ -68,6 +68,10 @@ app.post("/register", async function(req, res){
 		req.session.user_id = newUser.id;
 		console.log("registered");
 		res.redirect("/");
+	}else{
+		console.log("exists");
+		res.redirect("/login");
+	}
 	
 		
 })
@@ -76,8 +80,8 @@ app.get("/logout", (req, res)=>{
 	res.redirect("/login");
 })
 app.get("/", async function(req, res){
-	// const sample = await users.getUsers();
-	// console.log(sample);
+	const sample = await users.getUsers();
+	console.log(sample);
   	res.send("Hi");
 })
 
