@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Maxim Bootstrap Template - Index</title>
+  <title>Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -45,9 +45,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#services">Progress</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#services">Profile</a></li>
           <li><a class="nav-link scrollto" href="#services">Log Out</a></li>
-
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -102,6 +100,17 @@
               </div>
             </div>
           </div>
+          for(let i = 0; i<sample.alphabet.length; i++){
+              sample.alphabet[i]
+              sample.alpImg[i]
+              link to the next page will be like /${i}
+              when the server gets this request, it uses req.params.body, redirects to the pratice page 
+              with the variable 'i', the pratice page gets the 'i', from that gets sample.alphabet[i] and 
+              sample.alpImg[i] and displays the required sign.
+              For the solved unsolved score part, check in the users collection if the boolean along that i is false,
+              that means unsolved, and otherwise. if solved after opening, change the boolean status to true and increase
+              the score of that user and reflect it in the progress of the user.
+          }
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">

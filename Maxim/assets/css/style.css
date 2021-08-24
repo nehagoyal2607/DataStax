@@ -3,8 +3,11 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: "Raleway", sans-serif;
   color: #444444;
+  /* letter-spacing: 1px; */
+
 }
 
 a {
@@ -58,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: row;
   justify-content: space-between;
 }
-.sign-img-left, .teach-mac-right{
+.sign-img-left, .sign-img-right{
   height: 400px;
   width: 350px;
   background-color: #14806c;
@@ -66,8 +69,39 @@ h1, h2, h3, h4, h5, h6 {
 .sign-img-left{
   margin-left: 2em;
 }
-.teach-mac-right{
+.sign-img-right{
   margin-right: 2em;
+}
+.sign-img-mid{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-img-mid{
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+}
+.sign-img-mid .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  border: 1.5px solid rgb(94, 94, 94);
+  color: #fff;
+  background-color: #ffc2c2;
+}
+
+.sign-img-mid .btn-get-started:hover {
+  border-color: #1bac91;
+  background: #1bac91;
 }
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
