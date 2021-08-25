@@ -103,6 +103,25 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #1bac91;
   background: #1bac91;
 }
+.portfolio-info .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  border: 1.5px solid rgb(94, 94, 94);
+  color: #fff;
+  background-color: #ffc2c2;
+}
+
+.portfolio-info .btn-get-started:hover {
+  border-color: #1bac91;
+  background: #1bac91;
+}
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
