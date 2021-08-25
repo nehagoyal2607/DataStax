@@ -117,7 +117,27 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   background-color: #ffc2c2;
 }
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111;
+  z-index: 9999;
+}
 
+.preloader img {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
 .portfolio-info .btn-get-started:hover {
   border-color: #1bac91;
   background: #1bac91;

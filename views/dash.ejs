@@ -26,10 +26,28 @@
 
   <!-- Template Main CSS File -->
   <link href="./Maxim/assets/css/style.css" rel="stylesheet">
+  <script>
+//     $(window).load(function() {
+
+// // Preloader
+// $('.preloader img').fadeOut(); // will first fade out the loading animation
+// $('.preloader').delay(350).fadeOut('slow', function() {
+
+// });
+
+
+// });
+window.onload = function(){
+        //hide the preloader
+        setTimeout(()=>{document.querySelector(".preloader").style.display = "none"}, 200);
+    }
+  </script>
 </head>
 
 <body>
-
+  <div class="preloader">
+    <img src="./Maxim/assets/img/loader.svg" alt="Loading...">
+  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
@@ -52,10 +70,10 @@
 
     </div>
   </header><!-- End Header -->
-
+  
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container text-center text-md-left" data-aos="fade-up">
+    <div class="container text-center text-md-left" data-aos="fade-in">
       <h1>Start Practising</h1>
       <h2>Hey <%=currentUser.username%></h2>
       <a href="#about" class="btn-get-started scrollto" style="margin-right: 0.7em;">Begin</a>
