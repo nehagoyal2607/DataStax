@@ -61,6 +61,15 @@ module.exports = {
       return [];
     }
   },
+  getUserById: async(id) => {
+    const users = await getUsersCollection();
+    try{
+      const user = await users.findOne({id:{$eq:id}});
+      return user;
+    }catch(e){
+      return {};
+    }
+  },
   deleteUser: async () => {
     await getAstraClient();
     astraClient.restClient.delete(

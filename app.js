@@ -22,9 +22,24 @@ app.use(session({
 	resave:false,
 	saveUninitialized:false
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 
+app.use(async function(req,res,next){
+	const currentUser = await users.getUserById(req.session.user_id);
+	res.locals.currentUser = currentUser;
+	// console.log(currentUser);
+	next();
+})
+
+const isLoggedIn = function(req,res,next){
+	if(!req.session.user_id){
+		// if(req.session){
+		// 	req.session.redirectUrl = req.headers.referer || req.originalUrl || req.url;
+		// }
+		res.redirect('/login');
+	}else{
+		next();
+	}
+}
 app.get("/login", function(req, res){
 	res.render("login");
 })
@@ -34,16 +49,7 @@ app.get("/inner", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
-app.get("/dash", function(req, res){
-		User.findById(req.user._id).populate("rooms").exec(function(err,foundUser){
-			if(err){
-				// req.flash("error","Something went wrong!");
-				console.log(err);
-			}else{
-				res.render("dash", {user:foundUser});
-			}
-		})
-	
+app.get("/dash", isLoggedIn, function(req, res){
 	res.render("dash");
 })
 app.post("/login", async(req, res)=>{
@@ -57,8 +63,8 @@ app.post("/login", async(req, res)=>{
 		const validPassword = await bcrypt.compare(password, user.password);
 		if(validPassword){
 			req.session.user_id = user.id;
-			
-			var redirectionUrl = req.session.redirectUrl || '/dash';
+			console.log(user.id);
+			var redirectionUrl ='/dash';
 			res.redirect(redirectionUrl);
 
 		}else{
@@ -98,6 +104,9 @@ app.get("/logout", (req, res)=>{
 app.get("/", async function(req, res){
 	// const sample = await users.getUsers();
 	// console.log(sample);
+	// console.log(req.session.user_id);
+	// const currentUser = await users.getUserById(req.session.user_id);
+	// console.log(currentUser);
   	res.send("Hi");
 })
 
