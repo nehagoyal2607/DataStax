@@ -12,7 +12,7 @@
   // Classifier Variable
   let classifier;
   // Model URL
-  let imageModelURL = 'https://teachablemachine.withgoogle.com/models/z8uqAzIY5/';
+  let imageModelURL = 'https://teachablemachine.withgoogle.com/models/_8wOFtP0j/';
   
   // Video
   let video;
@@ -67,8 +67,13 @@
     // The results are in an array ordered by confidence.
     // console.log(results[0]);
     label = results[0].label;
+	if(label=='b'){
+		console.log("found");
+	} else{
+		classifyVideo();
+	}
     // Classifiy again!
-    classifyVideo();
+    
   }
 </script>
 </head>
