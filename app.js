@@ -28,6 +28,24 @@ app.use(passport.session());
 app.get("/login", function(req, res){
 	res.render("login");
 })
+app.get("/inner", function(req, res){
+	res.render("inner-page");
+})
+app.get("/index", function(req, res){
+	res.render("index");
+})
+app.get("/dash", function(req, res){
+		User.findById(req.user._id).populate("rooms").exec(function(err,foundUser){
+			if(err){
+				// req.flash("error","Something went wrong!");
+				console.log(err);
+			}else{
+				res.render("dash", {user:foundUser});
+			}
+		})
+	
+	res.render("dash");
+})
 app.post("/login", async(req, res)=>{
 	const {username, password} = req.body;
 	
@@ -40,7 +58,9 @@ app.post("/login", async(req, res)=>{
 		if(validPassword){
 			req.session.user_id = user.id;
 			
-			res.redirect("/");
+			var redirectionUrl = req.session.redirectUrl || '/dash';
+			res.redirect(redirectionUrl);
+
 		}else{
 			console.log("fail");
 			res.redirect("/login");
@@ -56,7 +76,7 @@ app.get("/register", function(req, res){
 
 app.post("/register", async function(req, res){
 	const user = users.getUserByName(req.body.username);
-	if(user == null  || user.length == 0){
+	
 		const {password, username} = req.body;
 		const hash = await bcrypt.hash(password, 12);
 
@@ -68,10 +88,6 @@ app.post("/register", async function(req, res){
 		req.session.user_id = newUser.id;
 		console.log("registered");
 		res.redirect("/");
-	}else{
-		console.log("exists");
-		res.redirect("/login");
-	}
 	
 		
 })
@@ -80,8 +96,8 @@ app.get("/logout", (req, res)=>{
 	res.redirect("/login");
 })
 app.get("/", async function(req, res){
-	const sample = await users.getUsers();
-	console.log(sample);
+	// const sample = await users.getUsers();
+	// console.log(sample);
   	res.send("Hi");
 })
 
