@@ -50,6 +50,11 @@ app.get("/login", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
+
+app.get("/progress", function(req, res){
+	res.render("progress");
+})
+
 app.get("/dash", isLoggedIn, async function(req, res){
 	const data = await signs.getSign();
 
