@@ -112,7 +112,7 @@ app.post("/register", async function(req, res){
 })
 app.get("/logout", (req, res)=>{
 	req.session.user_id = null;
-	res.redirect("/login");
+	res.redirect("/");
 })
 app.get("/", async function(req, res){
 	// const sample = await users.getUsers();
@@ -122,7 +122,12 @@ app.get("/", async function(req, res){
 	// console.log(currentUser);
 	// const sample = await signs.getSign();
 	// console.log(sample);
-  	res.render("index");
+	if(req.session.user_id!=null){
+		res.redirect("dash");
+	} else{
+		res.render("index");
+	}
+  	
 })
 
 app.listen(3000, process.env.IP, function(){
