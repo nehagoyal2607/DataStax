@@ -57,10 +57,14 @@
     }
   
     function setup() {
-      createCanvas(320, 260);
+      // stroke();
+      // strokeWeight(0);
+      let canvas = createCanvas(350, 400);
+      
+      canvas.parent('sign-img-gesture');
       // Create the video
       video = createCapture(VIDEO);
-      video.size(320, 240);
+      video.size(300, 240);
       video.hide();
   
       flippedVideo = ml5.flipImage(video);
@@ -69,15 +73,20 @@
     }
   
     function draw() {
-      background(0);
+      // background(0);
+      background('#14806c');
       // Draw the video
-      image(flippedVideo, 0, 0);
+      image(flippedVideo, 25, 61);
   
       // Draw the label
       fill(255);
-      textSize(16);
+      textSize(22);
       textAlign(CENTER);
-      text(label, width / 2, height - 4);
+      if(label!=symbol){
+        text("Try Again", width / 2, height - 20);
+      } else{
+        text("You're correct!", width / 2, height - 20);
+      }
     }
   
     // Get a prediction for the current video frame
@@ -152,7 +161,7 @@
     <section class="inner-page">
       <div class="sign-page-contain container">
         <div class="sign-img-left">
-          <img src="<%= sample.alpImg[symb]%>">
+          <img src="<%= sample.alpImg[symb]%>" style="border-radius: 2%;">
         </div>
         <div class="sign-img-mid">
           <div>
@@ -166,7 +175,7 @@
             </p>
           </div>
         </div>
-        <div class="sign-img-right">
+        <div class="sign-img-right" id="sign-img-gesture" style="background:none;">
           
         </div>
       </div>

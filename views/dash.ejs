@@ -76,7 +76,7 @@ window.onload = function(){
     <div class="container text-center text-md-left" data-aos="fade-in">
       <h1>Start Practising</h1>
       <h2>Hey <%=currentUser.username%></h2>
-      <a href="#about" class="btn-get-started scrollto" style="margin-right: 0.7em;">Begin</a>
+      <a href="#portfolio" class="btn-get-started scrollto" style="margin-right: 0.7em;">Begin</a>
     </div>
   </section><!-- End Hero -->
 
@@ -104,18 +104,6 @@ window.onload = function(){
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up">
-
-          <!-- for(let i = 0; i<sample.alphabet.length; i++){
-              sample.alphabet[i]
-              sample.alpImg[i]
-              link to the next page will be like /${i}
-              when the server gets this request, it uses req.params.body, redirects to the pratice page 
-              with the variable 'i', the pratice page gets the 'i', from that gets sample.alphabet[i] and 
-              sample.alpImg[i] and displays the required sign.
-              For the solved unsolved score part, check in the users collection if the boolean along that i is false,
-              that means unsolved, and otherwise. if solved after opening, change the boolean status to true and increase
-              the score of that user and reflect it in the progress of the user.
-          } -->
           <%for(let i = 0; i<sample.alphabet.length; i++){%>
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
@@ -124,16 +112,10 @@ window.onload = function(){
                 <h4><%=sample.alphabet[i].toUpperCase()%></h4>
                 <p>Symbol</p>
                 <a href="practice/<%=i%>" class="btn-get-started scrollto">Practice</a>
-                <!-- <div class="portfolio-links">
-                  <a href="practice/<%=i%>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div> -->
               </div>
             </div>
           </div>
           <%}%>
-          
-
         </div>
 
       </div>

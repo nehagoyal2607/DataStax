@@ -68,6 +68,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sign-img-left{
   margin-left: 2em;
+  border: #000 2px solid;
+  border-radius: 5%;
+  display: flex; justify-content: center; align-items: center;
+}
+canvas{
+  border-radius: 5%;
+  border: #000 2px solid;
+  letter-spacing: 0.5px;
+  font-family: "Raleway", sans-serif;
 }
 .sign-img-right{
   margin-right: 2em;
