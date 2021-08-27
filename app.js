@@ -2,14 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const session = require("express-session");
-const passport = require("passport");
 const expressSanitizer = require("express-sanitizer");
-const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
 const users = require("./models/user");
 const signs = require("./models/sign");
-const sign = require("./models/sign");
-
 
 require('dotenv').config();
 app.set("view engine","ejs");

@@ -945,7 +945,8 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(255, 255, 255);
+  display:flex;
 }
 
 .portfolio .portfolio-wrap::before {
@@ -1045,6 +1046,7 @@ section {
 }
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
+  background-color: #000000c2;
   opacity: 1;
 }
 
