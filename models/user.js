@@ -31,10 +31,12 @@ module.exports = {
     const newUserId = await users.create({
       id: uuidv4(),
       username: user.username,
-      password: user.password
+      password: user.password,
+      score : 0,
+      completed : new Array(26).fill(0)
     });
     const newu = await users.get(newUserId.documentId);
-    console.log(newu);
+    // console.log(newu);
     return (newu);
   },
   getUsers: async () => {
@@ -44,7 +46,9 @@ module.exports = {
       return Object.keys(res).map((itemId) => ({
         id: itemId,
         username: res[itemId].username,
-        password: res[itemId].password
+        password: res[itemId].password,
+        score: res[itemId].score,
+        completed: res[itemId].completed
       }));
     } catch (e) {
       return [];
@@ -70,6 +74,31 @@ module.exports = {
       return {};
     }
   },
+  updateScore: async (id, nscore, symb) => {
+    const users = await getUsersCollection();
+
+    try{
+      console.log("in update");
+      const listuser = await users.find({id:{$eq:id}});
+      const docid = (Object.keys(listuser)[0]);
+      
+      let user = await users.findOne({id:{$eq:id}});
+      let arr = user.completed;
+      if(arr[symb] == 0){
+        let newArr = new Array(26).fill(0)
+        newArr[symb] = 1
+
+        return await users.update(docid, {
+          score: nscore,
+          completed: newArr
+        })
+      }
+      
+    }catch(e){
+      console.log("not updated");
+      return {};
+    }
+  },
   deleteUser: async () => {
     await getAstraClient();
     astraClient.restClient.delete(
@@ -77,4 +106,5 @@ module.exports = {
     );
     await sleep(2000);
   },
+  
 };

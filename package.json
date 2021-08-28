@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@astrajs/collections": "^0.1.0",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",

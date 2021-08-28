@@ -119,49 +119,19 @@
     <section class="inner-page leaderboard-inner-page">
       
       <div class="leaderboard-container">
+        
         <div class="lb-main-row">
           <div>Rank</div>
           <div>Score</div>
         </div>
-        <div class="lb-sub-row">
-          <div>Jules</div>
-          <div>10</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Mark</div>
-          <div>30</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Adam</div>
-          <div>40</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>David</div>
-          <div>20</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Mathew</div>
-          <div>70</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Colt</div>
-          <div>30</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Mathew</div>
-          <div>70</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Colt</div>
-          <div>30</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Mathew</div>
-          <div>70</div>
-        </div>
-        <div class="lb-sub-row">
-          <div>Colt</div>
-          <div>30</div>
+        <%for(let i=0; i<users.length; i++){%>
+          <div class="lb-sub-row">
+            <div><%=users[i].username%></div>
+            <div><%=users[i].score%></div>
+          </div>
+        <%}%>
+        
+       
         </div>
         
       </div>
