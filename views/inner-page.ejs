@@ -36,10 +36,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+  const symb = "<%= symb %>";
   const symbol = "<%= sample.alphabet[symb] %>";
 </script>
   <script type="text/javascript">
+  // const axios = require('axios');
     // Classifier Variable
     let classifier;
     // Model URL
@@ -71,7 +74,7 @@
       // Start classifying
       classifyVideo();
     }
-  
+    var flag = false;
     function draw() {
       // background(0);
       background('#14806c');
@@ -86,6 +89,22 @@
         text("Try Again", width / 2, height - 20);
       } else{
         text("You're correct!", width / 2, height - 20);
+        
+        
+        if(!flag){
+          const statusBtn = document.querySelector("#statusBtn");
+          console.log(statusBtn);
+          statusBtn.textContent = "Solved";
+          statusBtn.classList.add("status_solved");
+          const score = document.querySelector("#score");
+          let finalScore = (Number)(score.textContent)+10;
+          score.textContent = (Number)(score.textContent)+10;
+          axios.post("/update", {
+            score: finalScore,
+            symbol: (Number)(symb)
+          })
+          flag = true;
+        }
       }
     }
   
@@ -170,8 +189,11 @@
             </p>
           </div>
           <div>  
-            <p class="btn-get-started scrollto">
-              Unsolved
+            <p class="btn-get-started scrollto" id = "statusBtn">Unsolved</p>
+          </div>
+          <div>
+            <p>
+              Score : <span id = "score"><%= user.score %></span>
             </p>
           </div>
         </div>

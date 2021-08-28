@@ -2,14 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const session = require("express-session");
-const passport = require("passport");
 const expressSanitizer = require("express-sanitizer");
-const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
 const users = require("./models/user");
 const signs = require("./models/sign");
-const sign = require("./models/sign");
-
 
 require('dotenv').config();
 app.set("view engine","ejs");
@@ -51,8 +47,12 @@ app.get("/index", function(req, res){
 	res.render("index");
 })
 
-app.get("/progress", function(req, res){
-	res.render("progress");
+app.get("/progress", async function(req, res){
+	const userData = await users.getUsers();
+	userData.sort(function (a, b) {
+		return b.score - a.score;
+	  });
+	res.render("progress", {users:userData});
 })
 
 app.get("/dash", isLoggedIn, async function(req, res){
@@ -64,11 +64,11 @@ app.get("/dash", isLoggedIn, async function(req, res){
 // 	res.render("inner-page", {symb: symbolll});
 // })
 // let symbolll = -1;
-app.get("/practice/:symbol", async function(req, res){
+app.get("/practice/:symbol", isLoggedIn, async function(req, res){
 	// symbolll = req.params.symbol;
 	const data = await signs.getSign();
-
-	res.render("inner-page", {sample:data[0], symb: req.params.symbol});
+	const user = await users.getUserById(req.session.user_id);
+	res.render("inner-page", {sample:data[0], symb: req.params.symbol, user});
 })
 app.post("/login", async(req, res)=>{
 	const {username, password} = req.body;
@@ -119,12 +119,20 @@ app.get("/logout", (req, res)=>{
 	req.session.user_id = null;
 	res.redirect("/");
 })
+app.post("/update", async function(req, res){
+	await users.updateScore(req.session.user_id, req.body.score, req.body.symbol);
+	console.log("updated");
+})
 app.get("/", async function(req, res){
+	// await users.deleteUser();
 	// const sample = await users.getUsers();
 	// console.log(sample);
 	// console.log(req.session.user_id);
+	// const updated = await users.updateScore(req.session.user_id, 80);
+	// console.log(updated);
 	// const currentUser = await users.getUserById(req.session.user_id);
 	// console.log(currentUser);
+
 	// const sample = await signs.getSign();
 	// console.log(sample);
 	if(req.session.user_id!=null){
