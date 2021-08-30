@@ -48,6 +48,7 @@ app.get("/index", function(req, res){
 })
 app.get("/translate", async function(req, res){
 	const data = await signs.getSign();
+	// console.log(data[0]);
 	res.render("translate", {sample: data[0]});
 })
 app.get("/progress", async function(req, res){

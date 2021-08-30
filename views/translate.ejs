@@ -23,33 +23,44 @@
  <link href="./Maxim/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
  <link href="./Maxim/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
  <link href="./Maxim/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
  <!-- Template Main CSS File -->
 
  <link href="./Maxim/assets/css/style.css" rel="stylesheet">
  <script>
-   const symbol = "<%=sample%>";
-   
-   let text = $("translateInput").val();
-   let arr = [];
-   if(text.length()!=0){
-      for(let i = 0; i<text.length(); i++){
-        if(text[i]==' '){
+   let symbol = "<%=sample.alpImg%>";
+  function translateText(){
+    let text = $(".translateInput").val();
+    let pbody = $(".translateResult");
+    pbody.empty();
+    let arr = [];
+    if(text.length!=0){
+        for(let i = 0; i<text.length; i++){
+          if(text.charAt(i)==' '){
+            
+          } else{
+            text = text.toLowerCase();
+            let pos = text.charCodeAt(i)-97;
+            arr.push(pos);
+          }
+        }   
+    } else{
+      alert("Enter text");
+    }
+    console.log(arr);
+    let parts = symbol.split(",");
+    console.log(parts[0]);
+    for(let i = 0; i<arr.length; i++){
+        const html = `<div class="translateItems">
+              <img height = "125px" width = "100px" src="${parts[arr[i]]}" alt="">
+            </div>`;
+        pbody.append(html);
+    }
+    pbody.css('border', '2px solid black');
 
-        } else{
-          let pos = text[i].toLowerCase() - 'a';
-          arr.push(pos);
-        }
-      }   
-   } else{
+  }
 
-   }
-   for(let i = 0; i<arr.length; i++){
-      Add this to div :- symbol.alpImg[arr[i]]
-   }
-
-   when tryagain pressed, clear the array, clear the div dom, and start again.
- </script>
+</script>
 </head>
 
 <body>
@@ -66,7 +77,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
@@ -85,7 +96,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Translate</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li>Translate</li>
           </ol>
         </div>
@@ -99,25 +110,12 @@
           Enter your phrase 
         </p>
         <form method="" action="">
-          <input type="text" name="translateInput" id="translateInput" placeholder="Enter text here">
-          <input type="submit" name="translateSubmit" id="translateSubmit" placeholder="Submit">
+          <input type="text" name="translateInput" class="translateInput" placeholder="Enter text here">
+          <!-- <input  placeholder="Enter text here"> -->
+          <button type="button" onclick="translateText()" name="translateSubmit" id="translateSubmit">Translate</button>
         </form>
         <div class="translateResult">
-          <div class="translateItems">
-            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
-          </div>
-          <div class="translateItems">
-            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
-          </div>
-          <div class="translateItems">
-            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
-          </div>
-          <div class="translateItems">
-            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
-          </div>
-          <div class="translateItems">
-            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
-          </div>
+          
         </div>
       </div>
     </section>

@@ -182,12 +182,12 @@ canvas{
   background-color: #399784;
 }
 .translateResult{
+  margin-top: 2em;
   max-width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  border: 2px solid black;
 }
 .translateItems{
   margin: 0.1em;
