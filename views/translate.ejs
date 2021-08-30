@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Inner Page - Maxim Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ <!-- Favicons -->
+ <link href="./Maxim/assets/img/favicon.png" rel="icon">
+ <link href="./Maxim/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+ <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+ <!-- Vendor CSS Files -->
+ <link href="./Maxim/assets/vendor/aos/aos.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+ <!-- Template Main CSS File -->
+
+ <link href="./Maxim/assets/css/style.css" rel="stylesheet">
+ <script>
+   const symbol = "<%=sample%>";
+   
+   let text = $("translateInput").val();
+   let arr = [];
+   if(text.length()!=0){
+      for(let i = 0; i<text.length(); i++){
+        if(text[i]==' '){
+
+        } else{
+          let pos = text[i].toLowerCase() - 'a';
+          arr.push(pos);
+        }
+      }   
+   } else{
+
+   }
+   for(let i = 0; i<arr.length; i++){
+      Add this to div :- symbol.alpImg[arr[i]]
+   }
+
+   when tryagain pressed, clear the array, clear the div dom, and start again.
+ </script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html">Maxim</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Translate</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Translate</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+      <div class="container">
+        <p>
+          Enter your phrase 
+        </p>
+        <form method="" action="">
+          <input type="text" name="translateInput" id="translateInput" placeholder="Enter text here">
+          <input type="submit" name="translateSubmit" id="translateSubmit" placeholder="Submit">
+        </form>
+        <div class="translateResult">
+          <div class="translateItems">
+            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
+          </div>
+          <div class="translateItems">
+            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
+          </div>
+          <div class="translateItems">
+            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
+          </div>
+          <div class="translateItems">
+            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
+          </div>
+          <div class="translateItems">
+            <img height = "100px" width = "100px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAG1BMVEXMzMwAAACysrIZGRmZmZkzMzNMTExmZmZ/f3/jLKqNAAACIElEQVR4nO3X6XKDMAxGUfACfv8nLhjwhtgmIu1M7/nVqEFfZRuSdh0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/HHGGLl8v/r7gWGw/cyO1fvNaG9Xn3kn0C1NFyHXx1wdr6qPvBUY+l5qvDSwtm4hV595K3DqO4Rp20yI71430MUL53Js5c6qzwd5JdDlw2fzChU/zivoz6oPfSFwfu+whJVX+W3d5OoH3go06bqx3MewHU+5WhvK7TfD+4Hnfefp92W5Ws9RHmRjLw6DQqDIpZ2ezqbN9e2VXG07pElMccLfCpSNafPq4beFkauVkCeJc5yfBYVAUbqdTFqpaFg6yNWjSW7MoRIoyM8IoYM5qh5McmcOncA9m06Fq/+ItYNclScJN+bQCmwNef7PFmj7DnI1h1pgbb7xrFHpG27NoRh41Lbt4MV77/ghEu+Pq29imoFN2yK6fu5tD3C5ejDHxSSagcdtm+HFD9ompZljuJhEM7Awx1rXFNLr9PCQq9IcY/nJ+HJgEe3L45ouSqcztZOr4hzd2SSqgU20bx4H+REfu9mzqjjHySSqgVnM82ZTVJe9D80/N/uqPMfhJKqBzVIUtttp3v3eeh9/nbZXrtaD5HMc2gOkH3jdNx7JVfOhtK+Wk5T3YxDmUA687ts5v1aq0yFXn/h64LS8bnKzquLrgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPjPfgCFQQ9yD5vluwAAAABJRU5ErkJggg==" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">Maxim</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./Maxim/assets/vendor/aos/aos.js"></script>
+  <script src="./Maxim/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./Maxim/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./Maxim/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="./Maxim/assets/vendor/php-email-form/validate.js"></script>
+  <script src="./Maxim/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="./Maxim/assets/js/main.js"></script>
+
+</body>
+
+</html>

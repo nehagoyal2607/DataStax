@@ -46,7 +46,10 @@ app.get("/login", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
-
+app.get("/translate", async function(req, res){
+	const data = await signs.getSign();
+	res.render("translate", {sample: data[0]});
+})
 app.get("/progress", async function(req, res){
 	const userData = await users.getUsers();
 	userData.sort(function (a, b) {
