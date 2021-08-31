@@ -63,7 +63,15 @@ app.get("/progress", async function(req, res){
 	  });
 	res.render("progress", {users:userData});
 })
-
+app.get("/profile", isLoggedIn, async function(req, res){
+	const signData = await signs.getSign();
+	const userData = await users.getUserById(req.session.user_id);
+	const usersData = await users.getUsers();
+	usersData.sort(function (a, b) {
+		return b.score - a.score;
+	  });
+	res.render("profile", {signs:signData[0], user:userData, users:usersData});
+})
 app.get("/dash", isLoggedIn, async function(req, res){
 	const data = await signs.getSign();
 
