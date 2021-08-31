@@ -46,6 +46,9 @@ app.get("/login", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
+app.get("/webinar", function(req, res){
+	res.render("webinar");
+})
 app.get("/translate", async function(req, res){
 	const data = await signs.getSign();
 	// console.log(data[0]);

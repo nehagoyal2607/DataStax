@@ -192,6 +192,67 @@ canvas{
 .translateItems{
   margin: 0.1em;
 }
+.container-bottom{
+  margin-top: 2em;
+}
+.webinarDiv{
+  /* min-height: 200px;
+  width: 400px; */
+  /* background-color: rgb(242 242 242 / 58%); */
+  background-color: #1bac91;
+  color: #fff;
+  padding: 1em;
+  margin: auto;
+}
+.join-button{
+  padding: 2px 15px;
+}
+.webinarJoin .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  border: 2px solid #fff;
+  background: rgb(0, 0, 0);
+  color: #fff;
+}
+
+.webinarJoin .btn-get-started:hover {
+  border-color: #1bac91;
+  font-size: 17px;
+
+  /* padding: 10px 30px; */
+  background: rgb(0, 0, 0);
+}
+#webinarInputs{
+  display: none;
+}
+
+.container-top .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 4px;
+  transition: 0.5s;
+  border: 2px solid #fff;
+  background: rgb(0, 0, 0);
+  color: #fff;
+}
+
+.container-top .btn-get-started:hover {
+  border-color: #1bac91;
+  /* padding: 8px 30px; */
+  background: rgb(0, 0, 0);
+}
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
