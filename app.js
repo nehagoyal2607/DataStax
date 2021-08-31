@@ -51,6 +51,11 @@ app.get("/translate", async function(req, res){
 	// console.log(data[0]);
 	res.render("translate", {sample: data[0]});
 })
+app.get("/translateTwo", async function(req, res){
+	const data = await signs.getSign();
+	// console.log(data[0]);
+	res.render("translateTwo", {sample: data[0]});
+})
 app.get("/progress", async function(req, res){
 	const userData = await users.getUsers();
 	userData.sort(function (a, b) {

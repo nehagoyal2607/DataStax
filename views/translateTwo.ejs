@@ -28,38 +28,27 @@
 
  <link href="./Maxim/assets/css/style.css" rel="stylesheet">
  <script>
-   let symbol = "<%=sample.alpImg%>";
-  function translateText(){
-    let text = $(".translateInput").val();
-    let pbody = $(".translateResult");
-    pbody.empty();
-    let arr = [];
-    if(text.length!=0){
-        for(let i = 0; i<text.length; i++){
-          if(text.charAt(i)==' '){
-            
-          } else{
-            text = text.toLowerCase();
-            let pos = text.charCodeAt(i)-97;
-            arr.push(pos);
-          }
-        }   
-    } else{
-      alert("Enter text");
-    }
-    console.log(arr);
-    let parts = symbol.split(",");
-    console.log(parts[0]);
-    for(let i = 0; i<arr.length; i++){
-        const html = `<div class="translateItems">
-              <img height = "125px" width = "100px" src="${parts[arr[i]]}" alt="">
-            </div>`;
+   let symbol = "<%=sample.alphabet%>".split(",");
+   function translateTwo(alpIndex){
+        console.log(alpIndex);
+        const alphabet = symbol[alpIndex];   
+        let pbody = $(".translateResult");
+        const html = `<div>${alphabet}</div>`;
         pbody.append(html);
-    }
-    pbody.css('border', '2px solid black');
-
-  }
-
+   }
+   function clearDiv(){
+        $(".translateResult").empty();
+   }
+   function clearLastLetter(){
+        $(".translateResult > div").last().remove();
+   }
+   function insertSpace(){
+       const html = "<div>&nbsp</div>";
+       $(".translateResult").append(html);
+   }
+//    if ($('#data > div').length > 1) {
+//    $('#data > div').last().remove();
+//     }
 </script>
 </head>
 
@@ -87,14 +76,14 @@
     </div>
   </header><!-- End Header -->
 
-  <main id="main" style="height:70vh;">
+  <main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Translate - English To ASL</h2>
+          <h2>Translate - ASL to English</h2>
           <ol>
             <li><a href="/">Home</a></li>
             <li>Translate</li>
@@ -106,18 +95,27 @@
 
     <section class="inner-page">
       <div class="container">
-        <p>
-          Enter your phrase 
-        </p>
-        <form method="" action="">
-          <input type="text" name="translateInput" class="translateInput" placeholder="Enter text here">
-          <!-- <input  placeholder="Enter text here"> -->
-          <button type="button" onclick="translateText()" name="translateSubmit" id="translateSubmit">Translate</button>
-        </form>
+          <button type="button" onclick="clearDiv()">Clear</button>
+          <button type="button" onclick="clearLastLetter()">Delete last letter</button>
+          <button type="button" onclick="insertSpace()">Space</button>
+
         <div class="translateResult">
           
         </div>
       </div>
+      <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+      <div class="row portfolio-container" data-aos="fade-up">
+        <%for(let i = 0; i<sample.alphabet.length; i++){%>
+        <div class="col-lg-2 col-md-2 col-sm-4 portfolio-item filter-app" onclick="translateTwo(<%=i%>)" style="cursor: pointer;">
+          <!-- <div class="portfolio-wrap"> -->
+            <img src="<%=sample.alpImg[i]%>" class="img-fluid" alt="" style = "margin: auto; height: 125px; width:100px">
+          <!-- </div> -->
+        </div>
+        <%}%>
+      </div>
+    </section> 
+      </div>  
     </section>
 
   </main><!-- End #main -->
