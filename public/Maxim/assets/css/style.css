@@ -1624,3 +1624,7 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+.translate_two_div:active{
+  border:4px solid #36b099f5;
+}
