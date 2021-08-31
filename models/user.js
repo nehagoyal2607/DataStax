@@ -84,10 +84,16 @@ module.exports = {
       
       let user = await users.findOne({id:{$eq:id}});
       let arr = user.completed;
-      if(arr[symb] == 0){
+      // console.log(arr);
+      if(!arr[symb] || arr[symb] == 0){
         let newArr = new Array(26).fill(0)
+        for(let i=0; i<26; i++){
+          if(arr[i] == 1)
+          newArr[i] = arr[i];
+        }
+        // console.log(newArr);
         newArr[symb] = 1
-
+        // console.log(newArr);
         return await users.update(docid, {
           score: nscore,
           completed: newArr
