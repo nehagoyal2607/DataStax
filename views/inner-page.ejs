@@ -99,11 +99,13 @@
           const score = document.querySelector("#score");
           let finalScore = (Number)(score.textContent)+10;
           score.textContent = (Number)(score.textContent)+10;
+          
           axios.post("/update", {
             score: finalScore,
             symbol: (Number)(symb)
           })
           flag = true;
+          // alert("Wohooo! Proceed to leaderboard to view your progress.")
         }
       }
     }
@@ -193,7 +195,7 @@
           </div>
           <div>
             <p>
-              Score : <span id = "score"><%= user.score %></span>
+              Score : <span id = "score">0</span>
             </p>
           </div>
         </div>

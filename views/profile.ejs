@@ -70,20 +70,20 @@ svg {
 }
 
 .meter-1 {
-  stroke-dasharray: 360;
+  stroke-dasharray: 270;
   /* stroke-dashoffset: 0; */
-  stroke: aqua;
+  stroke: #1bac91;
   animation: progress-1 1s ease-out;
 }
 
-/* @keyframes progress-1 {
+@keyframes progress-1 {
     from {
-        stroke-dashoffset: 360;
+        stroke-dashoffset: 270;
     }
     to {
-        stroke-dashoffset: 100;
+        stroke-dashoffset: <%=270-(user.score/260*270)%>;
     }
-} */
+}
 
       </style>
 </head>
@@ -138,14 +138,18 @@ svg {
                         <div class="px-4 pt-5 pb-1">
                             
                             <div class="p-1 rounded shadow-sm bg-light">
-                                <h5 class="mb-0 mt-1 ml-1">Progress <span style="text-align: right;"><%=(user.score/260*100).toFixed(2)%>%</span></h5>
+                                <h5 class="mb-0 mt-1 ml-1">Progress </span></h5>
                                 <p class="font-italic mb-0" style="text-align: center;">
                                     <svg style="margin:0">
                                         <circle class="bg" cx="51" cy="51" r="45"></circle>
                                         
-                                        <circle class="meter-1" cx="63" cy="51" r="45" style="stroke-dashoffset: <%=-(user.score/260*360)%>;"></circle>
+                                        <circle class="meter-1" cx="63" cy="51" r="45" style="stroke-dashoffset: <%=270-(user.score/260*270)%>;"></circle>
                                     </svg>
-                                    
+                                    <div class="num">
+                                      <h2 style="    position: absolute;
+                                      top: 10.2em;
+                                      right: 13.7em;"><%=(user.score/260*100).toFixed(0)%><span>%</span></h2>
+                                    </div>
                                     
                                 </p>
                             </div>

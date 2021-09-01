@@ -6,7 +6,7 @@ const expressSanitizer = require("express-sanitizer");
 const bcrypt = require("bcrypt");
 const users = require("./models/user");
 const signs = require("./models/sign");
-
+const webs = require('./models/webinar');
 require('dotenv').config();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
@@ -46,8 +46,13 @@ app.get("/login", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
-app.get("/webinar", function(req, res){
-	res.render("webinar");
+app.get("/webinar", async function(req, res){
+	const webinars = await webs.getWebinars();
+	// console.log(webinars);
+	res.render("webinar", {webinars:webinars});
+})
+app.get("/webinar/:id", async function(req, res){
+	res.render("live", {meetingId:req.params.id});
 })
 app.get("/translate", async function(req, res){
 	const data = await signs.getSign();
@@ -142,6 +147,16 @@ app.get("/logout", (req, res)=>{
 app.post("/update", async function(req, res){
 	await users.updateScore(req.session.user_id, req.body.score, req.body.symbol);
 	console.log("updated");
+})
+app.post("/addWebinar", async function(req, res){
+	const newWeb = await webs.addWebinar({
+		title:req.body.title,
+		meetingId:req.body.meetingId,
+		timings:req.body.timings,
+		host:req.body.host,
+		description: req.body.description
+	})
+	res.redirect("/webinar");
 })
 app.get("/", async function(req, res){
 	// await users.deleteUser();

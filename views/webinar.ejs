@@ -86,14 +86,14 @@
         <p>
           <div class="btn-get-started scrollto createWebinarToggle" onclick="createToggle()" style="cursor: pointer;">Create A Webinar</div>
         </p>
-        <div id="webinarInputs">
+        <form id="webinarInputs" method="POST" action="/addWebinar">
           <div><input type="text" name = "title" placeholder="Meeting Title" style="margin-bottom: 0.5em"></div>
           <div><input type="text" name = "meetingId" placeholder="Meeting ID" style="margin-bottom: 0.5em"></div>
           <div><input type="text" name = "timings" placeholder="Timings" style="margin-bottom: 0.5em"></div>
           <div><input type="text" name = "host" placeholder="Host" style="margin-bottom: 0.5em"></div>
           <div><input type="text" name = "description" placeholder="Description" style="margin-bottom: 0.5em"></div>
-          <button type="button" class="btn btn-outline-dark">Create</button>
-        </div>
+          <input type="submit" class="btn btn-outline-dark">
+        </form>
       </div>
       <section id="portfolio" class="portfolio section-bg">
       <div class="container container-bottom">
@@ -101,23 +101,25 @@
           <h2>Upcoming Webinars</h2>
         </p>
         <div class="row portfolio-container" data-aos="fade-up" style="margin-top: 1.5em;">
+          <%for(let i=0; i<webinars.length; i++){%>
+            <div class="col-lg-6 col-md-6 portfolio-item filter-app">
+              <div class="webinarDiv shadow rounded">
+                <div class="d-flex justify-content-between">
+                <div class="webinarTitle"><h3><%=webinars[i].title%></h3></div>
+                <div class="webinarTimings"><%=webinars[i].timings%></div>
+                </div>
+                <div class="webinarHost">Host- <%=webinars[i].host%></div>
+                <div class="webinarDescription"><%=webinars[i].description%></div>
+                <p></p>
+                <div class="d-flex justify-content-end">
+                <div class="webinarJoin"><a href="/webinar/<%=webinars[i].meetingId%>" class="btn-get-started scrollto">JOIN</a></div>
+                </div>
+              </div>
+              </div>
+          <%}%>
+        
 
-        <div class="col-lg-6 col-md-6 portfolio-item filter-app">
-        <div class="webinarDiv shadow rounded">
-          <div class="d-flex justify-content-between">
-          <div class="webinarTitle"><h3>Hello.</h3></div>
-          <div class="webinarTimings">23rd Aug 11:30AM</div>
-          </div>
-          <div class="webinarHost">Host- Andrew</div>
-          <div class="webinarDescription">This is the description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quo odit nisi quaerat veritatis labore, quod consectetur? Laudantium, adipisci. Minima perferendis dolorum sequi illum vitae amet molestiae debitis fugiat omnis.</div>
-          <p></p>
-          <div class="d-flex justify-content-end">
-          <div class="webinarJoin"><a href="" class="btn-get-started scrollto">JOIN</a></div>
-          </div>
-        </div>
-        </div>
-
-        <div class="col-lg-6 col-md-6 portfolio-item filter-app">
+        <!-- <div class="col-lg-6 col-md-6 portfolio-item filter-app">
           <div class="webinarDiv shadow rounded">
             <div class="d-flex justify-content-between">
             <div class="webinarTitle"><h3>Hello.</h3></div>
@@ -175,7 +177,7 @@
                   <div class="webinarJoin"><a href="" class="btn-get-started scrollto">JOIN</a></div>
                   </div>
                 </div>
-                </div>
+                </div> -->
 
                 
             
