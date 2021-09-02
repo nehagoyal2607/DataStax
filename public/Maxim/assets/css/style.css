@@ -193,7 +193,7 @@ canvas{
   margin: 0.1em;
 }
 .container-bottom{
-  margin-top: 2em;
+  margin-top: 0em;
 }
 .webinarDiv{
   /* min-height: 200px;
@@ -203,6 +203,11 @@ canvas{
   color: #fff;
   padding: 1em;
   margin: auto;
+  transition: 0.1s ease-out;
+}
+.webinarDiv:hover{
+  padding: 1.1em;
+  border: 1px solid rgb(0, 0, 0);
 }
 .join-button{
   padding: 2px 15px;
@@ -221,18 +226,20 @@ canvas{
   background: rgb(0, 0, 0);
   color: #fff;
 }
-
+/* 
 .webinarJoin .btn-get-started:hover {
   border-color: #1bac91;
-  font-size: 17px;
+  /* font-size: 17px; */
 
   /* padding: 10px 30px; */
-  background: rgb(0, 0, 0);
-}
+  /* background: rgb(0, 0, 0); */
+/* }  */
 #webinarInputs{
   display: none;
 }
-
+.container-top{
+  margin-top: 5em;
+}
 .container-top .btn-get-started {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
