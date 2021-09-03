@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><%=data.title%></div>
+    <div><%=data.description%></div>
+    <form action='/forum/<%=data.title%>/addComment' method = 'POST'>
+        <input type="text" name="title">
+        <input type="text" name="description">
+        <input type='submit'>
+    </form>
+    <%for(let i=0; i<data.comments.length;i++){%>
+        <div>
+            <div ><%=data.comments[i].title%></div>
+            <p><%=data.comments[i].description%></p>
+            <p>Author <%=data.comments[i].author%></p>
+        </div>
+    <%}%>
+</body>
+</html>

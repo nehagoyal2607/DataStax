@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const users = require("./models/user");
 const signs = require("./models/sign");
 const webs = require('./models/webinar');
+const threads = require('./models/thread');
 require('dotenv').config();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
@@ -161,6 +162,34 @@ app.post("/addWebinar", async function(req, res){
 	})
 	res.redirect("/webinar");
 })
+app.post("/forum", isLoggedIn, async function(req, res){
+	const user = await users.getUserById(req.session.user_id);
+	const author = user.username;
+	await threads.addThread({
+		title:req.body.title,
+		description:req.body.description,
+		author:author
+	})
+	res.redirect("/forum");
+})
+app.get("/forum", isLoggedIn, async function(req, res){
+	const threadData = await threads.getThreads();
+	res.render("forum", {threads:threadData});
+})
+app.post("/forum/:id/addComment", isLoggedIn, async function(req, res){
+	const user = await users.getUserById(req.session.user_id);
+	const author = user.username;
+	await threads.addComment(req.params.id, {
+		title:req.body.title,
+		description:req.body.description,
+		author:author
+	})
+	res.redirect("/forum/"+req.params.id);
+})
+app.get("/forum/:id", isLoggedIn, async function(req, res){
+	const data = await threads.getThreadByTitle(req.params.id);
+	res.render("comments", {data:data});
+})
 app.get("/", async function(req, res){
 	// await users.deleteUser();
 	// const sample = await users.getUsers();
@@ -173,6 +202,7 @@ app.get("/", async function(req, res){
 
 	// const sample = await signs.getSign();
 	// console.log(sample);
+	// await threads.deleteThreads();
 	if(req.session.user_id!=null){
 		res.redirect("dash");
 	} else{

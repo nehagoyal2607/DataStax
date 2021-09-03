@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+<body>
+    <div>
+        <form action='/forum' method = 'POST'>
+            <input type="text" name="title">
+            <input type="text" name="description">
+            <input type='submit'>
+        </form>
+        <%for(let i=0; i<threads.length;i++){%>
+            <div>
+                <a href="/forum/<%=threads[i].title%>"><%=threads[i].title%></a>
+                <p><%=threads[i].description%></p>
+                <p>Author <%=threads[i].author%></p>
+            </div>
+        <%}%>
+        <a href="/form/1">Introduce Yourself</a>
+        <a href="/form/2">Why are you learning ASL</a>
+        <a href="/form/3">Job Vacancies</a>
+        <a href="/form/4">Current Events & News</a>
+        <a href="/form/5">ASL Courses</a>
+    </div>
+</body>
+</html>
