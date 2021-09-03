@@ -74,7 +74,7 @@ function changePage(page)
     listing_table.innerHTML = "";
     
     for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
-        listing_table.innerHTML += `<div class = "listItemPagi col-lg-4 col-md-6"><img src = "${objJson[i]}"></div>` + "<br>";
+        listing_table.innerHTML += `<div class = "listItemPagi col-lg-4 col-md-6" data-aos = "fade-in"><img src = "${objJson[i]}"></div>` + "<br>";
     }
     page_span.innerHTML = page;
 
