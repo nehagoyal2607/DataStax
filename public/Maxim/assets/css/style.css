@@ -183,7 +183,8 @@ canvas{
 }
 .translateResult{
   margin-top: 2em;
-  max-width: auto;
+  max-width: 1116px;
+  min-height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,6 +192,31 @@ canvas{
 }
 .translateItems{
   margin: 0.1em;
+}
+#listingTable{
+  
+}
+#listingTable img{
+  height: 350px;
+  width: 275px;
+  margin: 2em;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+.pagination{
+  margin-top: 0.5em;
+  font-size: 1.1em;
+  border: 1px solid #fff;
+  padding: 1px 6px;
+  background-color: black;
+  color: #fff;
+}
+#btn_prev, #btn_next{
+  color: #14806c;
+  font-size: 1.2em;
+}
+#btn_prev, #btn_next:hover{
+  color: #33af98;
 }
 .container-bottom{
   margin-top: 0em;
