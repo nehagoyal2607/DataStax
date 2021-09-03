@@ -46,6 +46,9 @@ app.get("/login", function(req, res){
 app.get("/index", function(req, res){
 	res.render("index");
 })
+app.get("/pagination", function(req, res){
+	res.render("pagination");
+})
 app.get("/webinar", async function(req, res){
 	const webinars = await webs.getWebinars();
 	// console.log(webinars);
