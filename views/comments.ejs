@@ -1,25 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      
+        <title>Inner Page - Maxim Bootstrap Template</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <style>
+          /* width */
+          ::-webkit-scrollbar {
+            width: 10px;
+          }
+          
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+          }
+           
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background: #888; 
+          }
+          
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+          }
+          
+        </style>
+        <!-- Favicons -->
+        <link href="/Maxim/assets/img/favicon.png" rel="icon">
+        <link href="/Maxim/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+      
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      
+        <!-- Vendor CSS Files -->
+        <link href="/Maxim/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="/Maxim/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Maxim/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/Maxim/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/Maxim/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="/Maxim/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+      
+        <!-- Template Main CSS File -->
+        
+        <link href="/Maxim/assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/comments.css">
+        <script>
+            function createToggle(){
+             var x = document.getElementById("commentInputs");
+             if (x.style.display === "block") {
+               x.style.display = "none";
+             } else {
+               x.style.display = "block";
+             }
+            }
+          </script>
+
+      </head>
 <body>
-    <div><%=data.title%></div>
-    <div><%=data.description%></div>
-    <form action='/forum/<%=data.title%>/addComment' method = 'POST'>
-        <input type="text" name="title">
-        <input type="text" name="description">
-        <input type='submit'>
-    </form>
-    <%for(let i=0; i<data.comments.length;i++){%>
-        <div>
-            <div ><%=data.comments[i].title%></div>
-            <p><%=data.comments[i].description%></p>
-            <p>Author <%=data.comments[i].author%></p>
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
+    
+          <div class="logo">
+            <h1><a href="index.html">Maxim</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          </div>
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
         </div>
-    <%}%>
-</body>
+    </header><!-- End Header -->
+    
+    <main id="main">
+        <section class=" about breadcrumbs">
+            
+                <div class="col-xl-6 col-lg-5 pt-lg-0" style="padding:10px; background-color: #c0e8ed;"> 
+                    <h3 data-aos="fade-left"><%=data.title%></h3>
+                    <p data-aos="fade-left">
+                        <%=data.description%>
+                    </p>
+                </div>
+            <div class="container ">
+                <div class="container-top mb-4" style="margin-top:2em">
+                    
+                        <div class="btn btn-get-started scrollto " onclick="createToggle()" style="cursor: pointer;">Add Comment</div>
+                        
+                    <form id="commentInputs" action='/forum/<%=data.title%>/addComment' method = 'POST' style="display: none;">
+                        
+                        <input type="text" name="title" class="question" id="nme"  required autocomplete="off"/>
+                        <label for="nme"><span>Enter the title</span></label>
+                        <input type="text" name="description" id="desc" class="question"/>
+                        <label for="desc"><span>Enter the title</span></label>
+                        <input type='submit'/>
+                    </form>
+                </div>
+                
+            
+            <%for(let i=0; i<data.comments.length;i++){%>
+                <div class="container-fluid mt-100">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <div class="media flex-wrap w-100 align-items-center"> <img src="https://i.imgur.com/iNmBizf.jpg" class="d-block ui-w-40 rounded-circle" alt="">
+                                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true"><%=data.comments[i].author%></a>
+                                            <div class="text-muted large"><%=data.comments[i].title%></div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p><%=data.comments[i].description%></p>
+                                </div>
+                                <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <%}%>
+        </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">Maxim</a>
+          </div>
+        </div>
+      </footer><!-- End Footer -->
+    
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+       <!-- Vendor JS Files -->
+       <script src="/Maxim/assets/vendor/aos/aos.js"></script>
+       <script src="/Maxim/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+       <script src="/Maxim/assets/vendor/glightbox/js/glightbox.min.js"></script>
+       <script src="/Maxim/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+       <script src="/Maxim/assets/vendor/php-email-form/validate.js"></script>
+       <script src="/Maxim/assets/vendor/swiper/swiper-bundle.min.js"></script>
+     
+       <!-- Template Main JS File -->
+       <script src="/Maxim/assets/js/main.js"></script>
+    
+    </body>
+    
 </html>
