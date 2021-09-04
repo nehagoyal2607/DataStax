@@ -58,7 +58,7 @@
              }
             }
           </script>
-
+            
       </head>
 <body>
     <header id="header" class="fixed-top d-flex align-items-center">
@@ -83,28 +83,35 @@
     
     <main id="main">
         <section class=" about breadcrumbs">
-            
-                <div class="col-xl-6 col-lg-5 pt-lg-0" style="padding:10px; background-color: #c0e8ed;"> 
-                    <h3 data-aos="fade-left"><%=data.title%></h3>
-                    <p data-aos="fade-left">
-                        <%=data.description%>
-                    </p>
-                </div>
+            <div class="container-fluid p-2" style="text-align: center;background-color: #c0e8ed;justify-content: center;align-content: center;align-items: center;"> 
+                <h3 data-aos="fade-left" class="aos-init aos-animate"><%=data.title%></h3>
+                <p data-aos="fade-left" class="mb-0 aos-init aos-animate">
+                    <%=data.description%>
+                </p>
+            </div>
+                
             <div class="container ">
                 <div class="container-top mb-4" style="margin-top:2em">
                     
                         <div class="btn btn-get-started scrollto " onclick="createToggle()" style="cursor: pointer;">Add Comment</div>
                         
-                    <form id="commentInputs" action='/forum/<%=data.title%>/addComment' method = 'POST' style="display: none;">
-                        
-                        <input type="text" name="title" class="question" id="nme"  required autocomplete="off"/>
-                        <label for="nme"><span>Enter the title</span></label>
-                        <input type="text" name="description" id="desc" class="question"/>
-                        <label for="desc"><span>Enter the title</span></label>
-                        <input type='submit'/>
+                    <form id="commentInputs" class="page container-top" action='/forum/<%=data.title%>/addComment' method = 'POST' style="display: none;">
+                        <label class="field field_v1">
+                            <input class="field__input" name ="title" placeholder="e.g. Introductions" required>
+                            <span class="field__label-wrap">
+                              <span class="field__label">Title</span>
+                            </span>
+                          </label>
+                          <label class="field field_v2">
+                            <input type="text-area" class="field__input" name = "description" placeholder="e.g. Tell us about yourself" required>
+                            <span class="field__label-wrap">
+                              <span class="field__label">Description</span>
+                            </span>
+                          </label>    
+                
+                        <input type='submit'class="btn btn-get-started" style="display: block;padding: 2px 25px"/>
                     </form>
                 </div>
-                
             
             <%for(let i=0; i<data.comments.length;i++){%>
                 <div class="container-fluid mt-100">

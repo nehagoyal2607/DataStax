@@ -1,148 +1,205 @@
+
 /*
-Basic input element using psuedo classes
+=====
+RESET STYLES
+=====
 */
+.field__input{ 
+    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+    
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  .field__input:focus::-moz-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  /*
+  =====
+  CORE STYLES
+  =====
+  */
+  
+  .field{
+    --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+    --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);   
+    --uiFieldBorderColorActive: var(--fieldBorderColorActive, rgba(22, 22, 22, 1));
+    margin-bottom: 1em;
+    display: var(--fieldDisplay, inline-flex);
+    position: relative;
+    font-size: var(--fieldFontSize, 1.1rem);
+    width:100%
+  }
+  
+  .field__input{
+    box-sizing: border-box;
+    width: var(--fieldWidth, 100%);
+    height: var(--fieldHeight, 3rem);
+    padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight) var(--fieldPaddingBottom, .5rem) var(--uiFieldPaddingLeft);
+    border-bottom: 1.5px solid #a5a2a2
+  }
+  
+  .field__input:focus{
+    outline: none;
+  }
+  
+  .field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field__input::-moz-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .field__input:focus::-moz-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .field__label-wrap{
+    box-sizing: border-box;
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .field__label-wrap::after{
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .field__input:focus ~ .field__label-wrap::after{
+    opacity: 1;
+  }
+  
+  .field__label{
+    position: absolute;
+    left: var(--uiFieldPaddingLeft);
+    top: calc(50% - .5em);
+  
+    line-height: 1;
+    font-size: var(--fieldHintFontSize, inherit);
+  
+    transition: top .2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity .2s ease-out, font-size .2s ease-out;
+    will-change: bottom, opacity, font-size;
+  }
+  
+  .field__input:focus ~ .field__label-wrap .field__label,
+  .field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label{
+    --fieldHintFontSize: var(--fieldHintFontSizeFocused, .75rem);
+  
+    top: var(--fieldHintTopHover, .25rem);
+  }
+  
+  /* 
+  effect 1
+  */
+  
+  .field_v1 .field__label-wrap::after{
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    transition: opacity .2s ease-out;
+    will-change: opacity;
+  }
+  
+  /* 
+  effect 2
+  */
+  
+  .field_v2 .field__label-wrap{
+    overflow: hidden;
+  }
+  
+  .field_v2 .field__label-wrap::after{
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    transform: translate3d(-105%, 0, 0);
+    will-change: transform, opacity;
+    transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
+  }
+  
+  .field_v2 .field__input:focus ~ .field__label-wrap::after{
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0;
+  }
+  
+  /*
+  effect 3
+  */
+  
+  .field_v3 .field__label-wrap::after{
+    border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    will-change: opacity, height;
+    transition: height .2s ease-out, opacity .2s ease-out;
+  }
+  
+  .field_v3 .field__input:focus ~ .field__label-wrap::after{
+    height: 100%;
+  }
+  
+  /*
+  =====
+  LEVEL 4. SETTINGS
+  =====
+  */
+  
+  .field{
+    --fieldBorderColor: #D1C4E9;
+    --fieldBorderColorActive: #1bac91;
+  }
+  
+  /*
+  =====
+  DEMO
+  =====
+  */
+  
 
   
-  h1 {
-    font-size: 28px;
-    margin-bottom: 2.5%;
+  .page{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    display: grid;
+    grid-gap: 30px;
   }
   
-  input,
-  span,
-  label,
-  textarea {
-    font-family: 'Ubuntu', sans-serif;
-    display: block;
-    margin: 10px;
-    padding: 5px;
-    border: none;
-    font-size: 22px;
+  .substack{
+    border:1px solid #EEE; 
+    background-color: #fff;
+    width: 100%;
+    max-width: 480px;
+    height: 280px;
+    margin: 1rem auto;;
   }
-  
-  textarea:focus,
-  input:focus {
-    outline: 0;
-  }
-  /* Question */
-  
-  input.question,
-  textarea.question {
-    font-size: 48px;
-    font-weight: 300;
-    border-radius: 2px;
-    margin: 0;
-    border: none;
-    width: 80%;
-    background: rgba(0, 0, 0, 0);
-    transition: padding-top 0.2s ease, margin-top 0.2s ease;
-    overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
-  }
-  /* Underline and Placeholder */
-  
-  input.question + label,
-  textarea.question + label {
-    display: block;
-    position: relative;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
-    width: 10%;
-    border-top: 1px solid red;
-    -webkit-transition: width 0.4s ease;
-    transition: width 0.4s ease;
-    height: 0px;
-  }
-  
-  input.question:focus + label,
-  textarea.question:focus + label {
-    width: 80%;
-  }
-  
-  input.question:focus,
-  input.question:valid {
-    padding-top: 35px;
-  }
-  
-  textarea.question:valid,
-  textarea.question:focus {
-    margin-top: 35px;
-  }
-  
-  input.question:focus + label > span,
-  input.question:valid + label > span {
-    top: -100px;
-    font-size: 22px;
-    color: #333;
-  }
-  
-  textarea.question:focus + label > span,
-  textarea.question:valid + label > span {
-    top: -150px;
-    font-size: 22px;
-    color: #333;
-  }
-  
-  input.question:valid + label,
-  textarea.question:valid + label {
-    border-color: green;
-  }
-  
-  input.question:invalid,
-  textarea.question:invalid {
-    box-shadow: none;
-  }
-  
-  input.question + label > span,
-  textarea.question + label > span {
-    font-weight: 300;
-    margin: 0;
-    position: absolute;
-    color: #8F8F8F;
-    font-size: 48px;
-    top: -66px;
-    left: 0px;
-    z-index: -1;
-    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-  }
-  
-  input[type="submit"] {
-    -webkit-transition: opacity 0.2s ease, background 0.2s ease;
-    transition: opacity 0.2s ease, background 0.2s ease;
-    display: block;
-    opacity: 0;
-    margin: 10px 0 0 0;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
-    background: #EEE;
-  }
-  
-  input[type="submit"]:active {
-    background: #999;
-  }
-  
-  input.question:valid ~ input[type="submit"], textarea.question:valid ~ input[type="submit"] {
-    -webkit-animation: appear 1s forwards;
-    animation: appear 1s forwards;
-  }
-  
-  input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input[type="submit"] {
-    display: none;
-  }
-  
-  @-webkit-keyframes appear {
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes appear {
-    100% {
-      opacity: 1;
-    }
-  }
-  

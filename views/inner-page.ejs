@@ -23,7 +23,8 @@
   <link href="/Maxim/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="/Maxim/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="/Maxim/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <link href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css" rel="stylesheet">
+  
   <!-- Template Main CSS File -->
   <link href="/Maxim/assets/css/style.css" rel="stylesheet">
 
@@ -37,6 +38,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
 <script>
   const symb = "<%= symb %>";
   const symbol = "<%= sample.alphabet[symb] %>";
@@ -106,10 +108,21 @@
           })
           flag = true;
           // alert("Wohooo! Proceed to leaderboard to view your progress.")
+          display();
         }
       }
     }
-  
+    var a = document.createElement('a'); 
+    var link = document.createTextNode("Leaderboard");
+    a.appendChild(link); 
+    a.title = "Leaderboard"; 
+    a.href = "/profile"; 
+    function display(){
+    swal({
+      title: "Sweet!",
+      imageUrl: 'https://i.imgur.com/4NZ6uLY.jpg'
+    });
+};
     // Get a prediction for the current video frame
     function classifyVideo() {
       flippedVideo = ml5.flipImage(video)

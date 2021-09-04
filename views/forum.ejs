@@ -46,13 +46,23 @@
 
   <!-- Template Main CSS File -->
   <link href="/Maxim/assets/css/style.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="/comments.css">
   <!-- =======================================================
   * Template Name: Maxim - v4.3.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script>
+    function createToggle(){
+     var x = document.getElementById("commentInputs");
+     if (x.style.display === "block") {
+       x.style.display = "none";
+     } else {
+       x.style.display = "block";
+     }
+    }
+  </script>
 </head>
 <body>
     <header id="header" class="fixed-top d-flex align-items-center">
@@ -74,26 +84,73 @@
     
         </div>
     </header><!-- End Header -->
+    <section class="breadcrumbs">
+        <div class="container">
+  
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Forum</h2>
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li>Forum</li>
+            </ol>
+          </div>
+  
+        </div>
+      </section>
     <main id="main">
-        <section class="breadcrumbs">
+        <section class="container pt-0">
             <div>
-                <form action='/forum' method = 'POST'>
+                <div class="container-top mb-4" style="margin-top:2em">
+                    
+                    <div class="btn btn-get-started scrollto " onclick="createToggle()" style="cursor: pointer;">Add New Topic</div>
+                    
+                <form id="commentInputs" class="page container-top" action='/forum' method = 'POST' style="display: none;">
+                    <label class="field field_v1">
+                        <input class="field__input" name ="title" placeholder="e.g. Introductions" required>
+                        <span class="field__label-wrap">
+                          <span class="field__label">Title</span>
+                        </span>
+                      </label>
+                      <label class="field field_v2">
+                        <input type="text-area" class="field__input" name = "description" placeholder="e.g. Tell us about yourself" required>
+                        <span class="field__label-wrap">
+                          <span class="field__label">Description</span>
+                        </span>
+                      </label>    
+            
+                    <input type='submit'class="btn btn-get-started" style="display: block;padding: 2px 25px"/>
+                </form>
+            </div>
+                <!-- <form action='/forum' method = 'POST'>
                     <input type="text" name="title">
                     <input type="text" name="description">
                     <input type='submit'>
-                </form>
+                </form> -->
                 <%for(let i=0; i<threads.length;i++){%>
-                    <div>
-                        <a href="/forum/<%=threads[i].title%>"><%=threads[i].title%></a>
-                        <p><%=threads[i].description%></p>
-                        <p>Author <%=threads[i].author%></p>
+                    <div class="container-fluid mt-100">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <div class="media flex-wrap w-100 align-items-center"> <img src="https://i.imgur.com/iNmBizf.jpg" class="d-block ui-w-40 rounded-circle" alt="">
+                                            <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true"><%=threads[i].author%></a>
+                                                <div class="text-muted large" href="/forum/<%=threads[i].title%>"><%=threads[i].title%></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p><%=threads[i].description%></p>
+                                    </div>
+                                    <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                   
                 <%}%>
-                <a href="/form/1">Introduce Yourself</a>
-                <a href="/form/2">Why are you learning ASL</a>
-                <a href="/form/3">Job Vacancies</a>
-                <a href="/form/4">Current Events & News</a>
-                <a href="/form/5">ASL Courses</a>
             </div>
         </section>
     </main>
