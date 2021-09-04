@@ -42,6 +42,8 @@
 <script>
   const symb = "<%= symb %>";
   const symbol = "<%= sample.alphabet[symb] %>";
+  const sscore = "<%=user.score%>";
+  console.log(sscore);
 </script>
   <script type="text/javascript">
   // const axios = require('axios');
@@ -99,9 +101,9 @@
           statusBtn.textContent = "Solved";
           statusBtn.classList.add("status_solved");
           const score = document.querySelector("#score");
-          let finalScore = (Number)(score.textContent)+10;
+          let finalScore = (Number)(sscore)+10;
           score.textContent = (Number)(score.textContent)+10;
-          
+          console.log(sscore);
           axios.post("/update", {
             score: finalScore,
             symbol: (Number)(symb)

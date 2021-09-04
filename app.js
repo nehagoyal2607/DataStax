@@ -100,6 +100,7 @@ app.get("/practice/:symbol", isLoggedIn, async function(req, res){
 	// symbolll = req.params.symbol;
 	const data = await signs.getSign();
 	const user = await users.getUserById(req.session.user_id);
+	console.log(user);
 	res.render("inner-page", {sample:data[0], symb: req.params.symbol, user});
 })
 app.post("/login", async(req, res)=>{
@@ -205,6 +206,7 @@ app.get("/", async function(req, res){
 
 	// const sample = await signs.getSign();
 	// console.log(sample);
+	// await webs.deleteWebinars();
 	// await threads.deleteThreads();
 	// const sample = await words.getSign();
 	// console.log(sample);
