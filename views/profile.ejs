@@ -130,7 +130,7 @@ svg {
                     <div class="bg-white shadow rounded overflow-hidden">
                         <div class="px-4 pt-0 pb-4 cover" style="height:8em">
                             <div class="media align-items-end profile-head">
-                                <div class="profile mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                                <div class="profile mr-3"><img src="./Maxim/assets/img/neutral_avatar.jpg" alt="..." width="130" class="" style="border-radius: 5%; "></div>
                                 <div class="media-body mb-5 text-white">
                                     <h4 class="mt-0 mb-0"><%=user.username%></h4>
                                     <!-- <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>New York</p> -->
@@ -154,18 +154,14 @@ svg {
                             
                             <div class="p-1 rounded shadow-sm bg-light">
                                 <h5 class="mb-0 mt-1 ml-1">Progress </span></h5>
+                                <div class="num">
+                                  <h2 style="position: absolute; margin-top: 0.2em; margin-left: 1em;"><%=(user.score/260*100).toFixed(0)%><span>%</span></h2>
+                                </div>
                                 <p class="font-italic mb-0" style="text-align: center;">
                                     <svg style="margin:0">
                                         <circle class="bg" cx="51" cy="51" r="45"></circle>
-                                        
                                         <circle class="meter-1" cx="63" cy="51" r="45" style="stroke-dashoffset: <%=270-(user.score/260*270)%>;"></circle>
                                     </svg>
-                                    <div class="num">
-                                      <h2 style="    position: absolute;
-                                      top: 10.2em;
-                                      right: 13.7em;"><%=(user.score/260*100).toFixed(0)%><span>%</span></h2>
-                                    </div>
-                                    
                                 </p>
                             </div>
                         </div>
