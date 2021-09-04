@@ -193,9 +193,7 @@ canvas{
 .translateItems{
   margin: 0.1em;
 }
-#listingTable{
-  
-}
+
 #listingTable img{
   height: 350px;
   width: 275px;
@@ -312,9 +310,11 @@ canvas{
   line-height: 1;
   font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
-
+.logo img{
+  color: white;
+}
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #fff;
   text-decoration: none;

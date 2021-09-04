@@ -206,7 +206,7 @@ input.question:invalid ~ #translateSubmit, textarea.question:invalid ~ #translat
     let parts = symbol.split(",");
     console.log(parts[0]);
     for(let i = 0; i<arr.length; i++){
-        const html = `<div class="translateItems">
+        const html = `<div class="translateItems col-lg-1">
               <img height = "125px" width = "100px" src="${parts[arr[i]]}" alt="">
             </div>`;
         pbody.append(html);
@@ -225,7 +225,7 @@ input.question:invalid ~ #translateSubmit, textarea.question:invalid ~ #translat
     <div class="container d-flex justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">Maxim</a></h1>
+        <h1><a href="index.html">SignScape</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -242,7 +242,7 @@ input.question:invalid ~ #translateSubmit, textarea.question:invalid ~ #translat
     </div>
   </header><!-- End Header -->
 
-  <main id="main" style="height:100vh;">
+  <main id="main" style="min-height:100vh;">
 
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
@@ -269,7 +269,7 @@ input.question:invalid ~ #translateSubmit, textarea.question:invalid ~ #translat
           <button type="button" onclick="translateText()" class = "btn" name="translateSubmit" id="translateSubmit" style="background-color: #333; color: #fff;">Translate</button>
           <!-- <input type="submit" value="Translate" onclick="translateText()" id="translateSubmit"/> -->
         </form>
-        <div class="translateResult">
+        <div class="translateResult row">
           
         </div>
       </div>
@@ -281,10 +281,10 @@ input.question:invalid ~ #translateSubmit, textarea.question:invalid ~ #translat
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>SignScape</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">Maxim</a>
+        Designed by <a href="/">SignScape</a>
       </div>
     </div>
   </footer><!-- End Footer -->
