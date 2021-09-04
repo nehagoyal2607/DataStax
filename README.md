@@ -44,7 +44,7 @@ A website built to escape the barriers of sign communication with people who are
 3. Run `nodemon app.js`
 4. Open http://localhost:3000/
 
-## Deployed Link:
-
+## Deployed Link: 
+https://signscape.herokuapp.com/
 ## Demo Link:
 
