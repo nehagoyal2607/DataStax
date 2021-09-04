@@ -119,7 +119,7 @@ app.post("/login", async(req, res)=>{
 		if(validPassword){
 			req.session.user_id = user.id;
 			console.log(user.id);
-			req.flash("success", "Successfully Logged In.")
+			// req.flash("success", "Successfully Logged In.")
 			var redirectionUrl ='/dash';
 			res.redirect(redirectionUrl);
 
@@ -149,7 +149,7 @@ app.post("/register", async function(req, res){
 			});
 
 			req.session.user_id = newUser.id;
-			req.flash("success", "Successfully Registered.")
+			// req.flash("success", "Successfully Registered.")
 			console.log("registered");
 			res.redirect("/dash");
 })
