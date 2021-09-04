@@ -164,9 +164,14 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="/">Dashboard</a></li>
-          <li><a class="nav-link scrollto" href="#about">Progress</a></li>
-          <li><a class="nav-link scrollto" href="#about">Profile</a></li>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
+          <li><a class="nav-link scrollto active" href="/dash#portfolio">Practice</a></li>
+          <li><a class="nav-link scrollto" href="/translate">English To ASL</a></li>
+          <li><a class="nav-link scrollto" href="/translateTwo">ASL To English</a></li>
+          <li><a class="nav-link scrollto" href="/webinar">Webinar</a></li>
+          <li><a class="nav-link scrollto" href="/pagination">Common Words</a></li>
+          <li><a class="nav-link scrollto" href="/forum">Forum</a></li>
           <li><a class="nav-link scrollto" href="/logout">Log Out</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -222,7 +227,8 @@
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  <%- include ("./partials/footer.ejs") %>
+  <!-- End Footer -->
   <!-- Vendor JS Files -->
   <script src="/Maxim/assets/vendor/aos/aos.js"></script>
   <script src="/Maxim/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -76,8 +76,15 @@
     
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+              <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
+          <li><a class="nav-link scrollto " href="/dash">Practice</a></li>
+          <li><a class="nav-link scrollto" href="/translate">English To ASL</a></li>
+          <li><a class="nav-link scrollto" href="/translateTwo">ASL To English</a></li>
+          <li><a class="nav-link scrollto" href="/webinar">Webinar</a></li>
+          <li><a class="nav-link scrollto" href="/pagination">Common Words</a></li>
+          <li><a class="nav-link scrollto active" href="/forum">Forum</a></li>
+          <li><a class="nav-link scrollto" href="/logout">Log Out</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -155,16 +162,8 @@
         </section>
     </main>
     <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>SignScape</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="/">SignScape</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    <%- include ("./partials/footer.ejs") %>
+    <!-- End Footer --><!-- End Footer -->
     
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     

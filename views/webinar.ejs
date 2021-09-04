@@ -27,6 +27,14 @@
  <!-- Template Main CSS File -->
 
  <link href="./Maxim/assets/css/style.css" rel="stylesheet">
+ <style>
+   input[type="text"]{
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border: 1.3px solid gray;
+    width: 300px;
+   }
+ </style>
  <script>
    function createToggle(){
     var x = document.getElementById("webinarInputs");
@@ -53,10 +61,15 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
+          <li><a class="nav-link scrollto " href="/dash">Practice</a></li>
+          <li><a class="nav-link scrollto" href="/translate">English To ASL</a></li>
+          <li><a class="nav-link scrollto" href="/translateTwo">ASL To English</a></li>
+          <li><a class="nav-link scrollto active" href="/webinar">Webinar</a></li>
+          <li><a class="nav-link scrollto" href="/pagination">Common Words</a></li>
+          <li><a class="nav-link scrollto" href="/forum">Forum</a></li>
+          <li><a class="nav-link scrollto" href="/logout">Log Out</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -82,12 +95,12 @@
           <div class="btn-get-started scrollto createWebinarToggle" onclick="createToggle()" style="cursor: pointer;">Create A Webinar</div>
         </p>
         <form id="webinarInputs" method="POST" action="/addWebinar">
-          <div><input type="text" name = "title" placeholder="Meeting Title" style="margin-bottom: 0.5em"></div>
-          <div><input type="text" name = "meetingId" placeholder="Meeting ID" style="margin-bottom: 0.5em"></div>
-          <div><input type="text" name = "timings" placeholder="Timings" style="margin-bottom: 0.5em"></div>
-          <div><input type="text" name = "host" placeholder="Host" style="margin-bottom: 0.5em"></div>
-          <div><input type="text" name = "description" placeholder="Description" style="margin-bottom: 0.5em"></div>
-          <input type="submit" class="btn btn-outline-dark">
+          <div><input type="text" name = "title" placeholder="Meeting Title" style="margin-bottom: 0.5em" required></div>
+          <div><input type="text" name = "meetingId" placeholder="Meeting ID" style="margin-bottom: 0.5em" required></div>
+          <div><input type="text" name = "timings" placeholder="Timings" style="margin-bottom: 0.5em" required></div>
+          <div><input type="text" name = "host" placeholder="Host" style="margin-bottom: 0.5em" required></div>
+          <div><input type="text" name = "description" placeholder="Description" style="margin-bottom: 0.5em" required></div>
+          <input type="submit" class="btn btn-get-started">
         </form>
       </div>
     </section>  
@@ -186,16 +199,8 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>SignScape</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="/">SignScape</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  <%- include ("./partials/footer.ejs") %>
+  <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

@@ -60,11 +60,11 @@ window.onload = function(){
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Practice</a></li>
-          <li><a class="nav-link scrollto" href="/translate">Translate</a></li>
-          <li><a class="nav-link scrollto" href="/translateTwo">TranslateTWO</a></li>
+          <li><a class="nav-link scrollto" href="/translate">English To ASL</a></li>
+          <li><a class="nav-link scrollto" href="/translateTwo">ASL To English</a></li>
           <li><a class="nav-link scrollto" href="/webinar">Webinar</a></li>
           <li><a class="nav-link scrollto" href="/pagination">Common Words</a></li>
           <li><a class="nav-link scrollto" href="/forum">Forum</a></li>
@@ -150,16 +150,8 @@ window.onload = function(){
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>SignScape</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="/">SignScape</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  <%- include ("./partials/footer.ejs") %>
+  <!-- End Footer --><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
