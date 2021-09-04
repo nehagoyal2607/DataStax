@@ -78,6 +78,19 @@ window.onload = function(){
   
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+      <%if(error && error.length > 0){%>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <%}%>
+      <%if(success && success.length > 0){%>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <%}%>
+      
+    </div>
     <div class="container text-center text-md-left" data-aos="fade-in">
       <h1>Start Practising</h1>
       <h2>Hey <%=currentUser.username%></h2>

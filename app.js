@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const session = require("express-session");
 const expressSanitizer = require("express-sanitizer");
 const bcrypt = require("bcrypt");
+const flash = require("connect-flash");
 const users = require("./models/user");
 const signs = require("./models/sign");
 const webs = require('./models/webinar');
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
 app.use(express.json())
 app.use(expressSanitizer());
-
+app.use(flash());
 app.use(session({
 	secret:"Our first datastax app",
 	resave:false,
@@ -26,6 +27,8 @@ app.use(session({
 app.use(async function(req,res,next){
 	const currentUser = await users.getUserById(req.session.user_id);
 	res.locals.currentUser = currentUser;
+	res.locals.error = req.flash("error");
+	res.locals.success = req.flash("success");
 	// console.log(currentUser);
 	next();
 })
@@ -53,12 +56,12 @@ app.get("/pagination", async function(req, res){
 	const sample = await words.getSign();
 	res.render("pagination", {words: sample});
 })
-app.get("/webinar", async function(req, res){
+app.get("/webinar", isLoggedIn, async function(req, res){
 	const webinars = await webs.getWebinars();
 	// console.log(webinars);
 	res.render("webinar", {webinars:webinars});
 })
-app.get("/webinar/:id", async function(req, res){
+app.get("/webinar/:id", isLoggedIn, async function(req, res){
 	res.render("live", {meetingId:req.params.id});
 })
 app.get("/translate", async function(req, res){
@@ -71,7 +74,7 @@ app.get("/translateTwo", async function(req, res){
 	// console.log(data[0]);
 	res.render("translateTwo", {sample: data[0]});
 })
-app.get("/progress", async function(req, res){
+app.get("/progress", isLoggedIn, async function(req, res){
 	const userData = await users.getUsers();
 	userData.sort(function (a, b) {
 		return b.score - a.score;
@@ -108,6 +111,7 @@ app.post("/login", async(req, res)=>{
 	
 	const user = await users.getUserByName(username);
 	if(user == null || user.length == 0){
+		req.flash("error", "User doesn't exist")
 		console.log("doesn't exist");
 		res.redirect("/login");
 	}else{
@@ -115,11 +119,13 @@ app.post("/login", async(req, res)=>{
 		if(validPassword){
 			req.session.user_id = user.id;
 			console.log(user.id);
+			req.flash("success", "Successfully Logged In.")
 			var redirectionUrl ='/dash';
 			res.redirect(redirectionUrl);
 
 		}else{
 			console.log("fail");
+			req.flash("error", "Incorrect username or password")
 			res.redirect("/login");
 		}
 	}
@@ -133,20 +139,19 @@ app.get("/register", function(req, res){
 
 app.post("/register", async function(req, res){
 	const user = users.getUserByName(req.body.username);
-	
-		const {password, username} = req.body;
-		const hash = await bcrypt.hash(password, 12);
-
-		const newUser = await users.addUser({
-			username: username,
-			password: hash,
-		});
-
-		req.session.user_id = newUser.id;
-		console.log("registered");
-		res.redirect("/");
-	
 		
+			const {password, username} = req.body;
+			const hash = await bcrypt.hash(password, 12);
+
+			const newUser = await users.addUser({
+				username: username,
+				password: hash,
+			});
+
+			req.session.user_id = newUser.id;
+			req.flash("success", "Successfully Registered.")
+			console.log("registered");
+			res.redirect("/dash");
 })
 app.get("/logout", (req, res)=>{
 	req.session.user_id = null;

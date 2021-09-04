@@ -26,6 +26,19 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				<div class="container">
+					<%if(error && error.length > 0){%>
+						<div class="alert alert-danger" role="alert">
+							<%= error %>
+						</div>
+					<%}%>
+					<%if(success && success.length > 0){%>
+						<div class="alert alert-success" role="alert">
+							<%= success %>
+						</div>
+					<%}%>
+					
+				</div>
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="./Login_v1/images/img-01.png" alt="IMG">
 				</div>
