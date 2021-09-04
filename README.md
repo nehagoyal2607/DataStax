@@ -18,3 +18,33 @@ A website built to escape the barriers of sign communication with people who are
 9. A translator to allows users to select signs to finally get the English Phrase.
 
 ## Tech-Stack Used
+
+- Node.js
+- Express.js
+- AstraDB
+- HTML
+- CSS
+- Javascript
+- ejs
+- Bootstrap
+- JQuery
+
+## Third-Party Libraries Used
+
+- Google Training Machine
+- connect-flash
+- bcrypt
+- SweetAlert
+- body-parser
+- axios
+
+## Steps to Reproduce
+1. Clone the repository
+2. Run `npm install`
+3. Run `nodemon app.js`
+4. Open http://localhost:3000/
+
+## Deployed Link:
+
+## Demo Link:
+
