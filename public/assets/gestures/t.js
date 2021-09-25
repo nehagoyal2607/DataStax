@@ -1,0 +1,16 @@
+import { Finger, FingerCurl, FingerDirection } from '../FingerDescription';
+import GestureDescription from '../GestureDescription';
+export const tDescription = new GestureDescription('t'); 
+tDescription.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1);
+tDescription.addDirection(Finger.Thumb, FingerDirection.VerticalUp, 1);
+tDescription.addCurl(Finger.Index, FingerCurl.FullCurl, 1);
+tDescription.addDirection(Finger.Index, FingerDirection.DiagonalUpRight, 1);
+tDescription.addCurl(Finger.Middle, FingerCurl.FullCurl, 1);
+tDescription.addDirection(Finger.Middle, FingerDirection.VerticalUp, 1);
+tDescription.addCurl(Finger.Ring, FingerCurl.FullCurl, 1);
+tDescription.addDirection(Finger.Ring, FingerDirection.VerticalUp, 1);
+tDescription.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1);
+tDescription.addDirection(Finger.Pinky, FingerDirection.DiagonalUpLeft, 1);
+tDescription.addDirection(Finger.Index, FingerDirection.DiagonalUpLeft, 1);
+tDescription.addDirection(Finger.Pinky, FingerDirection.DiagonalUpRight, 1);
+export default tDescription;

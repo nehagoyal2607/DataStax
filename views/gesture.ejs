@@ -64,8 +64,8 @@
   </div>
 
   <script>
-    
-       const config = {
+
+    const config = {
       video: { width: 640, height: 480, fps: 30 }
     };
 
@@ -81,8 +81,32 @@
     const gestureStrings = {
       'thumbs_up': '👍',
       'victory': '✌🏻',
-      'i_love_you': "love",
-      'a':"A"
+      'a':'A',
+      'b':'B',
+      'c':'C',
+      'd':'D',
+      'e':'E',
+      'f':'F',
+      'g':'G',
+      'h':'H',
+      'i':'I',
+      'j':'J',
+      'k':'K',
+      'l':'L',
+      'm':'M',
+      'n':'N',
+      'o':'O',
+      'p':'P',
+      'q':'Q',
+      'r':'R',
+      's':'S',
+      't':'T',
+      'u':'U',
+      'v':'V',
+      'w':'W',
+      'x':'X',
+      'y':'Y',
+      'z':'Z'
     };
 
     async function main() {
@@ -96,9 +120,35 @@
       // configure gesture estimator
       // add "✌🏻" and "👍" as sample gestures
       const knownGestures = [
+        fp.Gestures.VictoryGesture,
         fp.Gestures.ThumbsUpGesture,
         fp.Gestures.LoveYouGesture,
         fp.Gestures.AGesture,
+        fp.Gestures.BGesture,
+        fp.Gestures.CGesture,
+        fp.Gestures.DGesture,
+        fp.Gestures.EGesture,
+        fp.Gestures.FGesture,
+        fp.Gestures.GGesture,
+        fp.Gestures.HGesture,
+        fp.Gestures.IGesture,
+        fp.Gestures.JGesture,
+        fp.Gestures.KGesture,
+        fp.Gestures.LGesture,
+        fp.Gestures.MGesture,
+        fp.Gestures.NGesture,
+        fp.Gestures.OGesture,
+        fp.Gestures.PGesture,
+        fp.Gestures.QGesture,
+        fp.Gestures.RGesture,
+        fp.Gestures.SGesture,
+        fp.Gestures.TGesture,
+        fp.Gestures.UGesture,
+        fp.Gestures.VGesture,
+        fp.Gestures.WGesture,
+        fp.Gestures.XGesture,
+        fp.Gestures.YGesture,
+        fp.Gestures.ZGesture,
       ];
       const GE = new fp.GestureEstimator(knownGestures);
 
@@ -129,7 +179,7 @@
 
           // now estimate gestures based on landmarks
           // using a minimum confidence of 7.5 (out of 10)
-          const est = GE.estimate(predictions[i].landmarks, 0);
+          const est = GE.estimate(predictions[i].landmarks, 5.5);
 
           if(est.gestures.length > 0) {
             console.log(est);
@@ -144,7 +194,7 @@
         }
 
         // ...and so on
-        setTimeout(() => { estimateHands(); }, 1000 / config.video.fps);
+        setTimeout(() => { estimateHands(); }, 3000 / config.video.fps);
       };
 
       estimateHands();
