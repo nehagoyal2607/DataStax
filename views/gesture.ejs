@@ -53,9 +53,9 @@
     #video-container {
       /* width: 640px;
       height: 480px; */
-      width: 403px;
+      /* width: 403px;
       height: 400px;
-      position: relative;
+      position: relative; */
     }
 
     .layer {
@@ -98,8 +98,8 @@
         /* min-width: 300px;
         height: 600px; */
         width: 403px;
-      height: 400px;
-      position: relative;
+        height: 400px;
+        position: relative;
       }
     }
   </style>
@@ -362,7 +362,7 @@
             }else{
               myans += " ";
               $("#phrase").append(html);
-              console.log($("#phrase"))
+              // console.log($("#phrase"))
               textToAudio(myans);
             }
             // console.log("blank")
@@ -391,7 +391,7 @@
       const constraints = {
         audio: false,
         video: {
-          facingMode: "user",
+          facingMode: "environment",
           width: width,
           height: height,
           frameRate: { max: fps }
