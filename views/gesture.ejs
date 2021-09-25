@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
-  <title>FingerPose Example</title>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@1.7.4/dist/tf-converter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@1.7.4/dist/tf-core.min.js"></script> -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Translator</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ <!-- Favicons -->
+ <link href="./Maxim/assets/img/favicon.png" rel="icon">
+ <link href="./Maxim/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+ <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+ <!-- Vendor CSS Files -->
+ <link href="./Maxim/assets/vendor/aos/aos.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+ <link href="./Maxim/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <!-- Template Main CSS File -->
+
+ <link href="./Maxim/assets/css/style.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
   <script type="module" src="./assets/fingerpose.js"></script>
-
+  
   <style>
 
     * {
@@ -16,14 +37,13 @@
       user-select: none;
     }
 
-    html, body {
+    /* html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background-color: #333333;
       color: #ffffff;
-    }
+    } */
 
     body {
       margin: 0;
@@ -31,8 +51,10 @@
     }
 
     #video-container {
-      width: 640px;
-      height: 480px;
+      /* width: 640px;
+      height: 480px; */
+      width: 300px;
+      height: 300px;
       position: relative;
     }
 
@@ -56,18 +78,81 @@
   </style>
 </head>
 <body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
 
-  <div id="video-container">
+      <div class="logo">
+        <h1><a href="index.html">SignScape</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/dash#portfolio">Practice</a></li>
+          <li class="dropdown"><a href="#" class="active"><span>Translate</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/translate">English To ASL</a></li>
+              <li><a href="/translateTwo">ASL to English</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="/pagination">Common Words</a></li>
+          <li class="dropdown"><a href="#"><span>Connect</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/webinar">Webinar</a></li>
+              <li><a href="/forum">Forum</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="/profile">Profile</a></li>
+          <li><a class="nav-link scrollto" href="/logout">Log Out</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" style="min-height:100vh;">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Translate - English To ASL</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Translate</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+  <div class="d-flex justify-content-center align-items-center" style="margin: auto;">
+  <div id="video-container" class="p-3 m-4">
     <video id="pose-video" class="layer" playsinline></video>
     <canvas id="pose-canvas" class="layer"></canvas>
     <div id="pose-result" class="layer"></div>
   </div>
+  <div class="bg-dark p-3 m-4">
+    Hello
+  </div>
+  </div>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <%- include ("./partials/footer.ejs") %>
+  <!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script>
     var flag = false;
     var found = "";
     const config = {
-      video: { width: 640, height: 480, fps: 30 }
+      video: { width: 400, height: 400, fps: 30 }
     };
 
     const landmarkColors = {
