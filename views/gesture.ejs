@@ -64,7 +64,8 @@
   </div>
 
   <script>
-
+    var flag = false;
+    var found = "";
     const config = {
       video: { width: 640, height: 480, fps: 30 }
     };
@@ -179,22 +180,29 @@
 
           // now estimate gestures based on landmarks
           // using a minimum confidence of 7.5 (out of 10)
-          const est = GE.estimate(predictions[i].landmarks, 5.5);
+          const est = GE.estimate(predictions[i].landmarks, 7.5);
 
           if(est.gestures.length > 0) {
-            console.log(est);
+            // console.log(est);
             // find gesture with highest confidence
             let result = est.gestures.reduce((p, c) => { 
               
               return (p.confidence > c.confidence) ? p : c;
             });
-            
+            found = result.name;
+            flag = true;
             resultLayer.innerText = gestureStrings[result.name];
+            if(flag == true){
+              console.log(found);
+            }
           }
         }
 
         // ...and so on
-        setTimeout(() => { estimateHands(); }, 3000 / config.video.fps);
+        setTimeout(() => { 
+          estimateHands(); 
+          flag = false;
+        }, 700);
       };
 
       estimateHands();
