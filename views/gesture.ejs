@@ -137,8 +137,11 @@
     <canvas id="pose-canvas" class="layer"></canvas>
     <div id="pose-result" class="layer"></div>
   </div>
-  <div class="bg-dark p-3 m-4">
-    Hello
+  
+    
+  </div>
+  <div class="bg-dark p-3 m-4" style="min-width: 3em; color:white">
+    <p  id="phrase"></p>
   </div>
   </div>
   </main><!-- End #main -->
@@ -149,8 +152,24 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script>
+    function textToAudio(msg) {
+                // let msg = document.getElementById("text-to-speech").value;
+                
+                let speech = new SpeechSynthesisUtterance();
+                speech.lang = "en-US";
+                
+                speech.text = msg;
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+                
+                window.speechSynthesis.speak(speech);
+            }
+    
+    var phrase = $("#phrase").innerText;
     var flag = false;
     var found = "";
+    var myans="";
     const config = {
       video: { width: 400, height: 400, fps: 30 }
     };
@@ -296,8 +315,26 @@
       };
         setInterval(() => { 
           if(found === ""){
-              console.log("blank");
+            const html = "<span> </span>";
+            const last = $("#phrase").last()
+            if(last === "<span> </span>"){
+              console.log("blank")
             }else{
+              myans += " ";
+              $("#phrase").append(html);
+              console.log($("#phrase"))
+              textToAudio(myans);
+            }
+            // console.log("blank")
+            }else{
+              if(found.length > 1){
+                myans+=found+" ";
+                $("#phrase").append(found+" ");
+              }else{
+                myans+=found
+                $("#phrase").append(found);
+              }
+              
               console.log(found);
             }
           flag = false;
