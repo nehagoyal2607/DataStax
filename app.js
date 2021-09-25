@@ -5,16 +5,19 @@ const session = require("express-session");
 const expressSanitizer = require("express-sanitizer");
 const bcrypt = require("bcrypt");
 const flash = require("connect-flash");
+const fp = require("fingerpose");
 const users = require("./models/user");
 const signs = require("./models/sign");
 const webs = require('./models/webinar');
 const threads = require('./models/thread');
 const wordsmodel = require('./models/words');
 const words = require("./models/words");
+
 require('dotenv').config();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
+app.use('/node_modules',express.static(__dirname+'/node_modules'))
 app.use(express.json())
 app.use(expressSanitizer());
 app.use(flash());
@@ -198,6 +201,9 @@ app.post("/forum/:id/addComment", isLoggedIn, async function(req, res){
 app.get("/forum/:id", isLoggedIn, async function(req, res){
 	const data = await threads.getThreadByTitle(req.params.id);
 	res.render("comments", {data:data});
+})
+app.get("/gesture", async function(req, res){
+	res.render("gesture", {fp:fp});
 })
 app.get("/", async function(req, res){
 	// await users.deleteUser();
