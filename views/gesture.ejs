@@ -266,7 +266,6 @@
           // now estimate gestures based on landmarks
           // using a minimum confidence of 7.5 (out of 10)
           const est = GE.estimate(predictions[i].landmarks, 7.5);
-
           if(est.gestures.length > 0) {
             // console.log(est);
             // find gesture with highest confidence
@@ -277,20 +276,36 @@
             found = result.name;
             flag = true;
             resultLayer.innerText = gestureStrings[result.name];
-            if(flag == true){
-              console.log(found);
-            }
+            // if(found === ""){
+            //   console.log("blank");
+            // }else{
+            //   console.log(found);
+            //   return;
+            // }
           }
         }
 
         // ...and so on
-        setTimeout(() => { 
-          estimateHands(); 
-          flag = false;
-        }, 700);
+        // setTimeout(() => { 
+        //   if(found === ""){
+        //       console.log("blank");
+        //     }
+        //   estimateHands(); 
+        //   flag = false;
+        // }, 1000);
       };
-
-      estimateHands();
+        setInterval(() => { 
+          if(found === ""){
+              console.log("blank");
+            }else{
+              console.log(found);
+            }
+          flag = false;
+          found="";
+          estimateHands(); 
+          
+        }, 1000);
+      // estimateHands();
       console.log("Starting predictions");
     }
 
