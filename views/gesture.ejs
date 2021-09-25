@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
   <script type="module" src="./assets/fingerpose.js"></script>
-  <script src="./assets/gesture.js"> </script>
+
   <style>
 
     * {
@@ -81,7 +81,8 @@
     const gestureStrings = {
       'thumbs_up': '👍',
       'victory': '✌🏻',
-      'i_love_you': "love"
+      'i_love_you': "love",
+      'a':"A"
     };
 
     async function main() {
@@ -95,9 +96,9 @@
       // configure gesture estimator
       // add "✌🏻" and "👍" as sample gestures
       const knownGestures = [
-        // fp.Gestures.ThumbsUpGesture,
+        fp.Gestures.ThumbsUpGesture,
         fp.Gestures.LoveYouGesture,
-
+        fp.Gestures.AGesture,
       ];
       const GE = new fp.GestureEstimator(knownGestures);
 
