@@ -53,8 +53,8 @@
     #video-container {
       /* width: 640px;
       height: 480px; */
-      width: 300px;
-      height: 300px;
+      width: 403px;
+      height: 400px;
       position: relative;
     }
 
@@ -68,12 +68,39 @@
 
     #pose-video {
       transform: scaleX(-1);
+      /* height: 403px;
+      width: 400px; */
     }
 
     #pose-result {
       font-size: 100px;
       text-align: right;
       padding: 20px 30px 0 0;
+    }
+    @media screen and (max-width: 741px){
+      .mainDivContainer{
+        flex-direction: column;
+        /* margin: auto; */
+      }
+      #video-container{
+        min-width: 300px;
+        height: 600px;
+        
+        position: relative;
+      }
+    }
+      @media screen and (min-width: 742px){
+      .mainDivContainer{
+        /* flex-direction: column; */
+        /* margin: auto; */
+      }
+      #video-container{
+        /* min-width: 300px;
+        height: 600px; */
+        width: 403px;
+      height: 400px;
+      position: relative;
+      }
     }
   </style>
 </head>
@@ -131,7 +158,7 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 
-  <div class="d-flex justify-content-center align-items-center" style="margin: auto;">
+  <div class="mainDivContainer d-flex justify-content-center align-items-center" style="margin: auto;">
   <div id="video-container" class="p-3 m-4">
     <video id="pose-video" class="layer" playsinline></video>
     <canvas id="pose-canvas" class="layer"></canvas>
@@ -147,13 +174,26 @@
   <%- include ("./partials/footer.ejs") %>
   <!-- End Footer -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="./Maxim/assets/vendor/aos/aos.js"></script>
+  <script src="./Maxim/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./Maxim/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="./Maxim/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="./Maxim/assets/vendor/php-email-form/validate.js"></script>
+  <script src="./Maxim/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+  <!-- Template Main JS File -->
+  <script src="./Maxim/assets/js/main.js"></script>
   <script>
     var flag = false;
     var found = "";
+    var vidContainer = document.getElementById("video-container");
     const config = {
-      video: { width: 400, height: 400, fps: 30 }
+      video: { width: vidContainer.offsetWidth, height: vidContainer.offsetHeight, fps: 30 }
     };
+    // const config = {
+    //   video: { width: 600, height: 400, fps: 30 }
+    // };
 
     const landmarkColors = {
       thumb: 'red',
