@@ -83,6 +83,10 @@
 
     }
     @media screen and (max-width: 401px){
+      .phrasediv{
+        margin:auto !important;
+        margin-top:10px !important;
+      }
       .mainDivContainer{
         flex-direction: column;
         /* margin: auto; */
@@ -102,6 +106,9 @@
       }
       video{
         object-fit: fill;
+      }
+      .breadcrumbs{
+        display:none
       }
     }
       @media screen and (min-width: 742px){
@@ -183,7 +190,7 @@
     <canvas id="pose-canvas" class="layer"></canvas>
     <div id="pose-result" class="layer"></div>
   </div>
-  <div class="bg-dark p-3 mt-2 mx-auto" style="width: 20em; color:white">
+  <div class="phrasediv bg-dark p-3 mt-2 " style="width: 20em; color:white">
     <p  id="phrase"></p>
     
   </div>
