@@ -1,7 +1,7 @@
 import { Finger, FingerCurl, FingerDirection } from '../FingerDescription';
 import GestureDescription from '../GestureDescription';
 export const oDescription = new GestureDescription('o'); 
-oDescription.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1);
+oDescription.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 1);
 oDescription.addDirection(Finger.Thumb, FingerDirection.HorizontalRight, 1);
 oDescription.addCurl(Finger.Index, FingerCurl.HalfCurl, 1);
 oDescription.addDirection(Finger.Index, FingerDirection.DiagonalUpRight, 1);
