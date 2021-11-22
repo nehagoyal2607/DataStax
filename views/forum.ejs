@@ -28,6 +28,18 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #555; 
     }
+    
+    #main{
+      background-color: #311c1c;
+    }
+    .card .card-header img{
+      border-radius: 30px;
+    }
+    
+    .card:hover{
+      transform: translate(0, -5px);
+      transition: ease-in-out 0.2s;
+    }
   </style>
   <!-- Favicons -->
   <link href="/Maxim/assets/img/favicon.png" rel="icon">
@@ -100,35 +112,23 @@
     
         </div>
     </header><!-- End Header -->
-    <section class="breadcrumbs">
-        <div class="container">
-  
-          <div class="d-flex justify-content-between align-items-center">
-            <h2>Forum</h2>
-            <ol>
-              <li><a href="/">Home</a></li>
-              <li>Forum</li>
-            </ol>
-          </div>
-  
-        </div>
-      </section>
-    <main id="main">
+    
+    <main id="main" style="padding-top: 70px;">
         <section class="container pt-0">
             <div>
                 <div class="container-top mb-4" style="margin-top:2em">
                     
                     <div class="btn btn-get-started scrollto " onclick="createToggle()" style="cursor: pointer;">Add New Topic</div>
                     
-                <form id="commentInputs" class="page container-top" action='/forum' method = 'POST' style="display: none;">
+                <form id="commentInputs" class="page container-top" action='/forum' method = 'POST' style="display: none; color: rgb(182, 182, 182);">
                     <label class="field field_v1">
-                        <input class="field__input" name ="title" placeholder="e.g. Introductions" required>
+                        <input class="field__input" name ="title" placeholder="e.g. Introductions" required style="color: #fff;">
                         <span class="field__label-wrap">
                           <span class="field__label">Title</span>
                         </span>
                       </label>
                       <label class="field field_v2">
-                        <input type="text-area" class="field__input" name = "description" placeholder="e.g. Tell us about yourself" required>
+                        <input type="text-area" class="field__input" name = "description" placeholder="e.g. Tell us about yourself" required style="color: #fff;">
                         <span class="field__label-wrap">
                           <span class="field__label">Description</span>
                         </span>
@@ -142,17 +142,19 @@
                     <input type="text" name="description">
                     <input type='submit'>
                 </form> -->
+                <div class="row">
                 <%for(let i=0; i<threads.length;i++){%>
-                    <div class="container-fluid mt-100">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
+                    <!-- <div class="container-fluid mt-100"> -->
+                        
+                            <div class="col-lg-4 col-md-6" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                <div class="card mb-4" style="height: 280px;">
                                     <div class="card-header">
-                                        <div class="media flex-wrap w-100 align-items-center"> <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" class="d-block ui-w-40" alt="" style="
+                                        <div class="media flex-wrap w-100 align-items-center d-flex justify-content-between"> 
+                                          <img src="https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-02-512.png" class="d-block ui-w-40" alt="" style="
                                           width: 64px;
                                           height: 64px;
                                       ">
-                                            <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true"><%=threads[i].author%></a>
+                                            <div class="media-body ml-3"><%=threads[i].author%>
                                                 <div class="text-muted large"><a href="/forum/<%=threads[i].title%>"><%=threads[i].title%></a></div>
                                             </div>
                                             
@@ -161,17 +163,20 @@
                                     <div class="card-body">
                                         <p><%=threads[i].description%></p>
                                     </div>
-                                    <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                                    <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0">
+                                        <div style="padding-left: 1rem; margin-top: 0.5rem;">
                                         <p>
                                           <%=threads[i].comments.length%> Comments
                                         </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        
+                    <!-- </div> -->
                    
                 <%}%>
+                </div>
             </div>
         </section>
     </main>
