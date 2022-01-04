@@ -53,5 +53,5 @@ Deployed using **GCloud App Engine**
 4. Open http://localhost:3000/
 
 ## Deployed Link: 
-https://shellhacks-327120.el.r.appspot.com/
+https://unify-asl-app.herokuapp.com/
 
