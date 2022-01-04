@@ -13,7 +13,7 @@ const getAstraClient = async () => {
       30000
     );
   }
-  console.log(process.env.ASTRA_DB_ID)
+  // console.log(process.env.ASTRA_DB_ID)
   return astraClient;
 };
 

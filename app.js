@@ -235,7 +235,7 @@ app.get("/", async function(req, res){
 	// 		"https://www.british-sign.co.uk/british-sign-language/sign-of-the-day/2014/1/25-scotland.png",
 	// 		"https://www.british-sign.co.uk/british-sign-language/sign-of-the-day/2014/1/26-winter.png",
 	// 		"https://www.british-sign.co.uk/british-sign-language/sign-of-the-day/2014/1/27-support.png",
-	// 		"https://www.british-sign.co.uk/british-sign-language/sign-of-the-day/2014/1/30-read.png",
+	// 		"https://www.british-sign.co.uk/british-sign-language/sign-of-the-day/2014/1/30-read.png"
 	// 		],
 	// });
 	const sample = await words.getSign();
