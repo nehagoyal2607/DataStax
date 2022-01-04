@@ -12,7 +12,7 @@ Deployed using **GCloud App Engine**
 
 ## Features
 
-1. Allows direct communication using ASL by pointing the camera directly at the person. <br/> ![](/screenshots/talkphn.jpg)
+1. Allows direct communication using ASL by pointing the camera directly at the person. <br/> <img src="https://github.com/nehagoyal2607/DataStax/blob/main/screenshots/talkphn.jpg" width="200" height="400">
 ![](/screenshots/talklaptop.png)
 2. A user can login, gain access to signs that they can learn and master.![](/screenshots/home.png)
 3. Verify the correctness of the ASL sign online.![](/screenshots/virtualTry.png)
@@ -28,9 +28,6 @@ Deployed using **GCloud App Engine**
 
 - Node.js
 - Express.js
-- Tensorflow.js
-- Mediapipe
-- OpenCV
 - AstraDB
 - HTML
 - CSS
@@ -56,5 +53,5 @@ Deployed using **GCloud App Engine**
 4. Open http://localhost:3000/
 
 ## Deployed Link: 
-https://shellhacks-327120.el.r.appspot.com/
+https://unify-asl-app.herokuapp.com/
 
