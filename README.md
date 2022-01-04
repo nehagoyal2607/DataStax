@@ -12,7 +12,8 @@ Deployed using **GCloud App Engine**
 
 ## Features
 
-1. Allows direct communication using ASL by pointing the camera directly at the person. <br/><img src="https://github.com/nehagoyal2607/ShellHacks/blob/main/screenshots/talkphn.jpg?raw=true" width="200" height="400">
+1. Allows direct communication using ASL by pointing the camera directly at the person. <br/> ![](/screenshots/talkphn.jpg)
+![](/screenshots/talklaptop.png)
 2. A user can login, gain access to signs that they can learn and master.![](/screenshots/home.png)
 3. Verify the correctness of the ASL sign online.![](/screenshots/virtualTry.png)
 4. A progress bar to track your current progress and a record of the symbols mastered.
